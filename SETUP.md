@@ -12,21 +12,19 @@ git add .
 git commit -m "Initial commit: Personhood website"
 ```
 
-### 2. Create GitHub Repository
+### 2. GitHub Repository
 
-1. Go to https://github.com/new
-2. Repository name: `personhood-website` (or any name you prefer)
-3. **Important:** Make it Public (required for free GitHub Pages)
-4. Do NOT initialize with README (we already have files)
-5. Click "Create repository"
+The repository already exists at: https://github.com/Vibraneum/Cady.Social
+
+Make sure it's set to **Public** (required for free GitHub Pages).
 
 ### 3. Push to GitHub
 
-GitHub will show you commands. Run these (replace `YOUR-USERNAME` with your GitHub username):
+Run these commands:
 
 ```bash
 git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/personhood-website.git
+git remote add origin https://github.com/Vibraneum/Cady.Social.git
 git push -u origin main
 ```
 
@@ -43,7 +41,12 @@ git push -u origin main
 
 After a few minutes, your site will be available at:
 ```
-https://YOUR-USERNAME.github.io/personhood-website/
+https://vibraneum.github.io/Cady.Social/
+```
+
+Or if you've configured a custom domain already:
+```
+https://cady.social/
 ```
 
 ---

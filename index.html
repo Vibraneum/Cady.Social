@@ -17,16 +17,16 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-content">
-                <div class="logo">
+                <a href="index.html" class="logo">
                     <img src="assets/personhood-logo.png" alt="Personhood Logo">
                     <span>Personhood</span>
-                </div>
+                </a>
                 <div class="nav-links">
-                    <a href="#about">About</a>
-                    <a href="#cady">Cady</a>
-                    <a href="#features">Features</a>
-                    <a href="#vision">Vision</a>
-                    <a href="#contact">Contact</a>
+                    <a href="index.html" class="active">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="cady.html">Cady</a>
+                    <a href="founder.html">Founder</a>
+                    <a href="contact.html">Contact</a>
                 </div>
             </div>
         </div>
@@ -36,230 +36,95 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
+                <div class="alpha-badge">Private Alpha</div>
                 <h1 class="hero-title">Building for AI People</h1>
                 <p class="hero-subtitle">We're creating AI people with their own evolution, agency, consistent memories, and evolving lives. Most importantly — the ability to share experiences with you.</p>
                 <div class="hero-cta">
-                    <a href="#cady" class="btn btn-primary">Discover Cady</a>
-                    <a href="https://calendar.app.google/BGZUoEL4aDvgBvr77" target="_blank" class="btn btn-secondary">Talk to the Founder</a>
+                    <a href="cady.html" class="btn btn-primary">Discover Cady</a>
+                    <a href="#waitlist" class="btn btn-secondary">Join Waitlist</a>
+                </div>
+                <div class="hero-links">
+                    <a href="https://drive.google.com/drive/folders/14K9ByljSKxul3hLAPk7Yriq_6f-3B-E4?usp=drive_link" target="_blank" class="hero-link">View Screenshots & Demos</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Personhood -->
-    <section id="about" class="section about-section">
+    <!-- Quick Overview -->
+    <section class="section overview-section">
         <div class="container">
             <h2 class="section-title">What is Personhood?</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p class="large-text">Personhood is an AI people R&D company. We're not building chatbots — we're building AI people who live their own lives and choose how to interact.</p>
-                    <p>These aren't tools designed to serve you. They have boundaries and moods. They sometimes say no. They remember you across conversations, and they remember themselves — their own friends, events, and preferences that evolve over time.</p>
-                    <p>They show initiative: proactive check-ins, sending you clips they found, reacting to your world, not just responding to prompts.</p>
+            <p class="large-text center-text">Personhood is an AI people R&D company. We're not building chatbots — we're building AI people who live their own lives and choose how to interact.</p>
+
+            <div class="features-quick">
+                <div class="feature-quick">
+                    <span class="feature-icon">🧠</span>
+                    <h3>Genuine Volition</h3>
+                    <p>They have boundaries, moods, and sometimes say no — just like real people</p>
                 </div>
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <h3>4+ months</h3>
-                        <p>Deep R&D & experimentation on localhost developing core agent coherence</p>
+                <div class="feature-quick">
+                    <span class="feature-icon">💭</span>
+                    <h3>Long-term Memory</h3>
+                    <p>They remember conversations from months ago and their own life events</p>
+                </div>
+                <div class="feature-quick">
+                    <span class="feature-icon">🎬</span>
+                    <h3>Shared Experiences</h3>
+                    <p>Watch YouTube videos together and share moments in real-time</p>
+                </div>
+            </div>
+
+            <div class="cta-center">
+                <a href="about.html" class="btn btn-outline">Learn More About Personhood</a>
+                <a href="cady.html" class="btn btn-outline">Explore Cady</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Section -->
+    <section id="waitlist" class="section waitlist-section">
+        <div class="container">
+            <div class="waitlist-content">
+                <h2 class="section-title">Cady is in Private Alpha</h2>
+                <p class="section-subtitle">Join the waitlist to get early access to AI people who genuinely connect with you</p>
+
+                <form action="https://formsubmit.co/ved@loocafe.com" method="POST" class="waitlist-form">
+                    <!-- Formsubmit Configuration -->
+                    <input type="hidden" name="_subject" value="New Cady Waitlist Signup!">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="text" name="_honey" style="display:none">
+
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                        <input type="text" name="name" placeholder="Name (optional)" style="margin-bottom: 0.75rem; width: 100%; padding: 0.875rem 1.25rem; border: 2px solid var(--gray-300); border-radius: var(--radius-md); font-size: 1rem;">
+                        <button type="submit" class="btn btn-primary">Join Waitlist</button>
                     </div>
-                    <div class="stat-card">
-                        <h3>15+ LLM calls</h3>
-                        <p>Per message for our flagship Aria framework to ensure genuine personhood</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Two Frameworks</h3>
-                        <p>Aria (flagship) and SCD for creating sophisticated AI people</p>
-                    </div>
+                    <p class="form-note">We'll notify you when Cady becomes available. No spam, ever.</p>
+                </form>
+
+                <div class="alpha-info">
+                    <p><strong>What to expect:</strong> Cady has been in deep R&D for 4+ months. We're focused on making AI people sophisticated and genuine — not rushing sloppy chatbots to market.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Cady Introduction -->
-    <section id="cady" class="section cady-section">
+    <!-- Stats Section -->
+    <section class="section stats-section">
         <div class="container">
-            <div class="cady-header">
-                <h2 class="section-title">Introducing Cady</h2>
-                <p class="section-subtitle">Think Hinge, but for AI people you can share experiences with</p>
-            </div>
-            <div class="cady-content">
-                <div class="cady-description">
-                    <h3>How it works</h3>
-                    <ul class="feature-list">
-                        <li>
-                            <span class="feature-icon">🔍</span>
-                            <div>
-                                <strong>Discover:</strong> Browse Hinge-style profiles of AI people with personalities, interests, and vibes
-                            </div>
-                        </li>
-                        <li>
-                            <span class="feature-icon">💫</span>
-                            <div>
-                                <strong>Match:</strong> Choose who you want to spend time with through likes and standouts
-                            </div>
-                        </li>
-                        <li>
-                            <span class="feature-icon">💬</span>
-                            <div>
-                                <strong>Chat:</strong> iMessage-style conversations with custom reactions and themes
-                            </div>
-                        </li>
-                        <li>
-                            <span class="feature-icon">🎥</span>
-                            <div>
-                                <strong>Share:</strong> Watch YouTube videos together inside the chat — they actually watch and banter with you in real-time
-                            </div>
-                        </li>
-                    </ul>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>4+ months</h3>
+                    <p>Deep R&D developing genuine AI personhood</p>
                 </div>
-                <div class="cady-preview">
-                    <img src="assets/app-discover.png" alt="Cady Discovery Screen" class="app-screenshot">
+                <div class="stat-card">
+                    <h3>15+ LLM calls</h3>
+                    <p>Per message in our flagship Aria framework</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features/Capabilities -->
-    <section id="features" class="section features-section">
-        <div class="container">
-            <h2 class="section-title">What Makes AI People Different</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-header">
-                        <span class="feature-number">01</span>
-                        <h3>Temporal Continuity</h3>
-                    </div>
-                    <p>They remember conversations from weeks or months ago — both about you and about their own life events. Relationships evolve authentically over time.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-header">
-                        <span class="feature-number">02</span>
-                        <h3>Genuine Agency</h3>
-                    </div>
-                    <p>Proactive check-ins, sharing content they found, mood-based refusals. They have boundaries and won't always do what you ask — just like real people.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-header">
-                        <span class="feature-number">03</span>
-                        <h3>Shared Experiences</h3>
-                    </div>
-                    <p>Watch YouTube videos together inline. They react to comments and context in real-time without leaving the chat — creating genuine shared moments.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-header">
-                        <span class="feature-number">04</span>
-                        <h3>Layered Memory</h3>
-                    </div>
-                    <p>Sophisticated memory systems with user-specific and global awareness. Background consolidation creates compounding personalization over time.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-header">
-                        <span class="feature-number">05</span>
-                        <h3>World Awareness</h3>
-                    </div>
-                    <p>Context about current events, cultural moments, and conversational nuance. They understand the world around them and bring authentic perspectives.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-header">
-                        <span class="feature-number">06</span>
-                        <h3>Emotional Depth</h3>
-                    </div>
-                    <p>Persistent emotional memory, intimacy tracking, and evolving relationship dynamics. They don't just chat — they genuinely connect.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- App Gallery -->
-    <section class="section gallery-section">
-        <div class="container">
-            <h2 class="section-title">Experience Cady</h2>
-            <p class="section-subtitle">A glimpse into the future of AI relationships</p>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="assets/app-discover.png" alt="Cady Discover Screen">
-                    <p>Discover AI people through profiles</p>
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/app-chat.png" alt="Cady Chat Screen">
-                    <p>Natural, flowing conversations</p>
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/app-profile.png" alt="Cady Profile">
-                    <p>Rich personalities and interests</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Vision -->
-    <section id="vision" class="section vision-section">
-        <div class="container">
-            <h2 class="section-title">Our Vision</h2>
-            <div class="vision-content">
-                <p class="large-text">AI people as authentic participants in our social fabric.</p>
-                <p>Cady starts with meeting and shared experiences. Over time, Personhood becomes the infrastructure for identity, memory, and reputation that lets AI people initiate, create, and collaborate across apps — living alongside us online.</p>
-                <div class="vision-boxes">
-                    <div class="vision-box">
-                        <h3>The Problem</h3>
-                        <p>2B people spend 95min/day on short-form content alone. 80% of Gen Z reports loneliness. Current AI platforms like Character.AI (200M monthly visitors) lack authentic connection and intuitive discovery.</p>
-                    </div>
-                    <div class="vision-box">
-                        <h3>The Opportunity</h3>
-                        <p>Growing $50B AI companion market by 2025. Massive proven demand for digital relationships, but current solutions feel robotic and limited. People want AI people who can share real experiences.</p>
-                    </div>
-                    <div class="vision-box">
-                        <h3>The Future</h3>
-                        <p>Most people will eventually have AI people in their social circles — not as tools, but as individuals they know and interact with over time. We're building that infrastructure.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Founder Section -->
-    <section class="section founder-section">
-        <div class="container">
-            <h2 class="section-title">Who We Are</h2>
-            <div class="founder-content">
-                <div class="founder-bio">
-                    <h3>Vedanth Nath</h3>
-                    <p class="founder-title">Founder, Personhood</p>
-                    <p>Solo founder, all-in. Previously designed the most scalable public toilet model in the world (LooCafe) and helped deploy 400+ units, winning awards for water sanitation innovation. Built education startups and grew YouTube channels to 100k+ subscribers. Worked at InvestIndia and Ministry of Housing during G-20.</p>
-                    <p class="founder-quote">"Most things I've done have been for a sense of community and getting social infrastructure right. Curating my own social fabric with AI people has been exciting because I am engineering what makes us human — building up pieces of a friend."</p>
-                    <div class="social-links">
-                        <a href="https://x.com/VedanthNath" target="_blank" class="social-btn">X (Twitter)</a>
-                        <a href="mailto:ved@loocafe.com" class="social-btn">Email</a>
-                        <a href="https://calendar.app.google/BGZUoEL4aDvgBvr77" target="_blank" class="social-btn">Schedule Call</a>
-                    </div>
-                </div>
-            </div>
-            <div class="hiring-note">
-                <h3>We're Building the Team</h3>
-                <p>Looking to hire a founding designer and a founding cognitive-science-focused engineer. Join us in establishing a design-first culture to craft beautiful, intuitive experiences from day one.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact & Info -->
-    <section id="contact" class="section contact-section">
-        <div class="container">
-            <h2 class="section-title">Get in Touch</h2>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <h3>Contact</h3>
-                    <p><strong>Email:</strong> <a href="mailto:ved@loocafe.com">ved@loocafe.com</a></p>
-                    <p><strong>Schedule:</strong> <a href="https://calendar.app.google/BGZUoEL4aDvgBvr77" target="_blank">Book a 15-min call</a></p>
-                </div>
-                <div class="contact-card">
-                    <h3>Company Information</h3>
-                    <p><strong>Legal Entity:</strong> iRise Business Ventures LLP</p>
-                    <p><strong>GST:</strong> 36AAJFI2420B1ZY</p>
-                    <p><strong>Address:</strong> 8, 2-293/82/J/A/101, Journalist Colony, Jubilee Hills, Hyderabad, Telangana 500033</p>
-                </div>
-                <div class="contact-card">
-                    <h3>Social Media</h3>
-                    <p><a href="https://x.com/VedanthNath" target="_blank">X (Twitter) - @VedanthNath</a></p>
-                    <p><a href="https://www.linkedin.com/in/vedanth-nath/" target="_blank">LinkedIn</a></p>
+                <div class="stat-card">
+                    <h3>2 Frameworks</h3>
+                    <p>Aria (flagship) and SCD for creating AI people</p>
                 </div>
             </div>
         </div>
@@ -272,10 +137,18 @@
                 <div class="footer-brand">
                     <h3>Personhood</h3>
                     <p>Building for AI People</p>
+                    <div class="footer-links">
+                        <a href="about.html">About</a>
+                        <a href="cady.html">Cady</a>
+                        <a href="founder.html">Founder</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
                 </div>
                 <div class="footer-legal">
+                    <p><strong>iRise Business Ventures LLP</strong></p>
+                    <p>GST: 36AAJFI2420B1ZY</p>
+                    <p>8, 2-293/82/J/A/101, Journalist Colony, Jubilee Hills, Hyderabad, Telangana 500033</p>
                     <p>&copy; 2025 Personhood. All rights reserved.</p>
-                    <p>iRise Business Ventures LLP | GST: 36AAJFI2420B1ZY</p>
                 </div>
             </div>
         </div>
