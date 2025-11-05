@@ -1,6 +1,6 @@
 @echo off
 echo ========================================
-echo   Cady.Social - Deploying Website
+echo   Personhood - Deploying Website
 echo ========================================
 echo.
 
@@ -40,7 +40,7 @@ git add .
 
 echo.
 echo Step 3: Creating commit...
-git commit -m "Launch Cady.Social - Multi-page website with waitlist and private alpha"
+git commit -m "Personhood - Redesigned multi-page website with LocalHost-inspired aesthetic"
 
 echo.
 echo Step 4: Setting branch to main...
