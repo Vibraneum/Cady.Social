@@ -47,6 +47,9 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#F6C28B">
 
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://calendar.google.com; connect-src 'self' https://plausible.io;">
+
     <!-- Preload & DNS Prefetch -->
     <link rel="preload" href="styles.css" as="style">
 
@@ -55,6 +58,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Analytics - Plausible (Privacy-Friendly) -->
+    <script defer data-domain="cady.social" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
     <!-- Navigation -->

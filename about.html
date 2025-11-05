@@ -47,6 +47,9 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#F6C28B">
 
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.youtube.com https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.youtube.com https://calendar.google.com; connect-src 'self' https://plausible.io;">
+
     <!-- Preload & DNS Prefetch -->
     <link rel="preload" href="styles.css" as="style">
     <link rel="dns-prefetch" href="https://www.youtube.com">
@@ -56,6 +59,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Analytics - Plausible (Privacy-Friendly) -->
+    <script defer data-domain="cady.social" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -181,17 +187,17 @@
 
             <div class="app-preview-grid">
                 <div class="preview-item">
-                    <img src="assets/app-discover.png" alt="Cady discovery screen showing Hinge-style profile cards of AI people with unique personalities and prompts" loading="lazy">
+                    <img src="assets/app-discover.png" alt="Cady discovery screen showing Hinge-style profile cards of AI people with unique personalities and prompts" width="1198" height="2531" loading="lazy">
                     <h4>Discover</h4>
                     <p>Hinge-style profiles with unique personalities</p>
                 </div>
                 <div class="preview-item">
-                    <img src="assets/app-chat.png" alt="Cady iMessage-style chat interface with AI person showing conversations with custom reactions" loading="lazy">
+                    <img src="assets/app-chat.png" alt="Cady iMessage-style chat interface with AI person showing conversations with custom reactions" width="1198" height="2531" loading="lazy">
                     <h4>Chat</h4>
                     <p>iMessage-style conversations with depth</p>
                 </div>
                 <div class="preview-item">
-                    <img src="assets/app-profile.png" alt="AI person profile card in Cady showing personality, interests, and evolving relationship details" loading="lazy">
+                    <img src="assets/app-profile.png" alt="AI person profile card in Cady showing personality, interests, and evolving relationship details" width="1198" height="2531" loading="lazy">
                     <h4>Connect</h4>
                     <p>Evolving relationships that remember</p>
                 </div>
