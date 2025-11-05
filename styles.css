@@ -444,11 +444,15 @@ p {
     margin-bottom: 1rem;
 }
 
-.feature-number {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--accent-orange);
+.feature-icon-svg {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon-svg {
+    transform: scale(1.1);
 }
 
 .feature-card h3 {
@@ -854,8 +858,9 @@ p {
         padding: 1.5rem;
     }
 
-    .feature-number {
-        font-size: 1.5rem;
+    .feature-icon-svg {
+        width: 48px;
+        height: 48px;
     }
 
     .founder-bio {
@@ -1769,6 +1774,15 @@ h1, h2, h3 {
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(246, 194, 139, 0.3);
+    color: var(--primary-dark) !important;
+}
+
+.cta-box h2 {
+    color: var(--primary-dark) !important;
+}
+
+.cta-box p {
+    color: var(--gray-600) !important;
 }
 
 /* Generous Spacing Updates */
