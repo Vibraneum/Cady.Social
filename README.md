@@ -29,3 +29,4 @@ This website is hosted on GitHub Pages.
 ---
 
 © 2025 Personhood. All rights reserved.
+# Force GitHub Pages rebuild
