@@ -17,7 +17,7 @@
     --gray-900: #1A1A1A;
 
     /* Typography */
-    --font-display: 'DM Sans', sans-serif;
+    --font-display: 'Inter', sans-serif;
     --font-body: 'Inter', sans-serif;
 
     /* Spacing */
@@ -1521,48 +1521,47 @@ h1, h2, h3 {
     font-weight: 600 !important;
 }
 
-/* Hero Image Styles - Homepage */
+/* Hero Styles - Homepage (No Images) */
 .hero {
     display: flex;
     align-items: center;
-    min-height: 80vh;
-    padding: 6rem 0;
+    justify-content: center;
+    min-height: 70vh;
+    padding: 8rem 0;
+    text-align: center;
 }
 
 .hero .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+    max-width: 900px;
 }
 
-.hero-image-wrapper {
-    position: relative;
-    width: 100%;
-    height: auto;
-}
-
-.hero-image {
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius-xl);
-    box-shadow: 0 20px 60px rgba(62, 59, 40, 0.15);
+.hero-content {
     animation: fadeInUp 0.8s ease-out;
 }
 
-/* Hero Image Styles - About Page */
+.hero-image-wrapper {
+    display: none; /* Hidden - no images needed */
+}
+
+.hero-image {
+    display: none;
+}
+
+/* About Page Header (No Images) */
 .page-header-hero {
-    padding: 4rem 0 2rem;
+    padding: 6rem 0 4rem;
+    text-align: center;
 }
 
 .page-header-hero .header-content {
     text-align: center;
-    margin-bottom: 3rem;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .page-header-hero h1 {
     font-size: 3rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .header-subtitle {
@@ -1572,17 +1571,11 @@ h1, h2, h3 {
 }
 
 .header-image-wrapper {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    display: none; /* Hidden - no images needed */
 }
 
 .header-hero-image {
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius-xl);
-    box-shadow: 0 20px 60px rgba(62, 59, 40, 0.15);
-    animation: fadeInUp 0.8s ease-out;
+    display: none;
 }
 
 /* About Page Specific Styles */
@@ -1802,17 +1795,8 @@ h1, h2, h3 {
     font-weight: 500;
 }
 
-/* Mobile Responsive - Hero Images */
+/* Mobile Responsive */
 @media (max-width: 968px) {
-    .hero .container {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-
-    .hero-image-wrapper {
-        order: -1;
-    }
-
     .hero-title {
         font-size: 2.5rem;
     }
