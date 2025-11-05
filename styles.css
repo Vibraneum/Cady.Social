@@ -464,11 +464,13 @@ p {
 
 /* Unified Icon System - Feature Icons */
 .feature-icon-svg {
-    width: 56px;
-    height: 56px;
+    width: 64px;
+    height: 64px;
     flex-shrink: 0;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     filter: drop-shadow(0 2px 4px rgba(232, 168, 97, 0.15));
+    margin: 0 auto 1rem;
+    display: block;
 }
 
 .feature-card:hover .feature-icon-svg {
@@ -1078,6 +1080,11 @@ p {
     margin-top: 3rem;
     margin-bottom: 2rem;
     flex-wrap: wrap;
+}
+
+.btn-equal {
+    min-width: 180px;
+    text-align: center;
 }
 
 /* Waitlist Section */
@@ -1695,6 +1702,11 @@ h1, h2, h3 {
 .feature-card-about:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 40px rgba(62, 59, 40, 0.12);
+}
+
+.feature-card-about:hover .feature-icon-svg {
+    transform: translateY(-3px) scale(1.08);
+    filter: drop-shadow(0 4px 10px rgba(232, 168, 97, 0.3));
 }
 
 .feature-icon-large {
