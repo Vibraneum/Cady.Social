@@ -252,16 +252,16 @@ p {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--accent-orange) 0%, #E89A50 100%);
+    background: var(--primary-dark);
     color: var(--white);
     border: none;
-    box-shadow: 0 2px 8px rgba(232, 168, 97, 0.25);
+    box-shadow: 0 2px 8px rgba(62, 59, 40, 0.15);
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #E89A50 0%, var(--accent-orange) 100%);
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #2A2820 100%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(232, 168, 97, 0.35);
+    box-shadow: 0 6px 16px rgba(62, 59, 40, 0.25);
 }
 
 .btn-secondary {
@@ -1048,11 +1048,11 @@ p {
 
 /* Unified Icon System - Homepage Feature Icons */
 .feature-icon-home {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 1.5rem;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.75rem;
     display: block;
-    filter: drop-shadow(0 2px 4px rgba(232, 168, 97, 0.15));
+    filter: drop-shadow(0 3px 6px rgba(232, 168, 97, 0.2));
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1073,9 +1073,10 @@ p {
 
 .cta-center {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     justify-content: center;
     margin-top: 3rem;
+    margin-bottom: 2rem;
     flex-wrap: wrap;
 }
 
@@ -1383,25 +1384,8 @@ p {
 
 /* CTA Section */
 .cta-section {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--gray-900) 100%);
-    color: var(--white);
-}
-
-.cta-box {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.cta-box h2 {
-    color: var(--white);
-    margin-bottom: 1rem;
-}
-
-.cta-box p {
-    font-size: 1.125rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
+    background: var(--white);
+    padding: 5rem 0;
 }
 
 /* Features Detail */
@@ -2107,11 +2091,14 @@ h1, h2, h3 {
 }
 
 .alpha-info {
-    margin-top: 4rem;
+    margin-top: 5rem;
     padding: 3rem;
-    background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-warm) 100%);
+    background: linear-gradient(135deg,
+        rgba(254, 251, 234, 0.95) 0%,
+        rgba(246, 194, 139, 0.08) 100%);
     border-radius: var(--radius-lg);
-    border: 1px solid var(--accent-orange);
+    border: 1px solid rgba(232, 168, 97, 0.15);
+    box-shadow: 0 2px 8px rgba(62, 59, 40, 0.04);
 }
 
 .alpha-info h4 {
@@ -2303,12 +2290,15 @@ h1, h2, h3 {
 }
 
 .manifesto-text {
-    font-size: 1.25rem;
-    line-height: 1.9;
+    font-size: 1.15rem;
+    line-height: 1.85;
     color: var(--primary-dark);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     font-weight: 400;
     text-align: left;
+    padding-left: 2rem;
+    border-left: 3px solid rgba(232, 168, 97, 0.2);
+    position: relative;
 }
 
 .manifesto-text:last-child {
