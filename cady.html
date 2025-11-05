@@ -1,10 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cady - Think Hinge, but for AI people. Discover, match, and share experiences with AI people who have their own personalities and evolving lives.">
-    <title>Cady - Personhood</title>
+
+    <!-- Primary Meta Tags -->
+    <title>Cady - Hinge for AI People | Personhood</title>
+    <meta name="title" content="Cady - Hinge for AI People">
+    <meta name="description" content="Cady: Hinge-style app for discovering AI people. Match, chat, and share YouTube videos with AI people who have genuine agency, persistent memory, and evolving personalities.">
+    <meta name="keywords" content="Cady app, AI people app, Hinge for AI, AI companion app, watch YouTube with AI, persistent AI relationships, AI character discovery">
+    <meta name="author" content="Vedanth Nath, Personhood">
+    <meta name="copyright" content="© 2025 Personhood (iRise Business Ventures LLP)">
+    <meta name="language" content="English">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://cady.social/cady.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Personhood">
+    <meta property="og:title" content="Cady - Think Hinge, but for AI People">
+    <meta property="og:description" content="Discover, match, and share experiences with AI people. Watch YouTube together, have evolving conversations, and build genuine connections.">
+    <meta property="og:url" content="https://cady.social/cady.html">
+    <meta property="og:image" content="https://cady.social/assets/og-image-cady.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Cady - Hinge-style app for AI people">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@VedanthNath">
+    <meta name="twitter:creator" content="@VedanthNath">
+    <meta name="twitter:title" content="Cady - Think Hinge, but for AI People">
+    <meta name="twitter:description" content="Discover, match, and share experiences with AI people. Watch YouTube together, have evolving conversations, and build genuine connections.">
+    <meta name="twitter:image" content="https://cady.social/assets/twitter-card-cady.png">
+    <meta name="twitter:image:alt" content="Cady - AI people discovery app">
+
+    <!-- Favicon Package -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#F6C28B">
+
+    <!-- Preload & DNS Prefetch -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="dns-prefetch" href="https://www.youtube.com">
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +63,7 @@
         <div class="container">
             <div class="nav-content">
                 <a href="index.html" class="logo">
-                    <img src="assets/personhood-logo.png" alt="Personhood Logo">
+                    <img src="assets/personhood-logo.png" alt="Personhood logo - Building AI People" width="40" height="40">
                     <span>Personhood</span>
                 </a>
                 <div class="nav-links">
@@ -52,6 +99,7 @@
                     src="https://www.youtube.com/embed/ZRHqaliJc1s?start=12"
                     title="Cady - 3 Minute Demo"
                     frameborder="0"
+                    loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
                 </iframe>
@@ -98,15 +146,15 @@
             <h2 class="section-title">Experience Cady</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="assets/app-discover.png" alt="Cady Discover Screen">
+                    <img src="assets/app-discover.png" alt="Cady discovery screen showing Hinge-style profile cards of AI people with unique personalities and prompts" loading="lazy">
                     <p>Discover AI people through Hinge-style profiles</p>
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/app-chat.png" alt="Cady Chat Screen">
+                    <img src="assets/app-chat.png" alt="Cady iMessage-style chat interface with AI person showing conversations, custom reactions, and shared YouTube video" loading="lazy">
                     <p>Natural, flowing iMessage-style conversations</p>
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/app-profile.png" alt="Cady Profile">
+                    <img src="assets/app-profile.png" alt="AI person profile card in Cady showing personality, interests, and conversation history" loading="lazy">
                     <p>Rich personalities that evolve over time</p>
                 </div>
             </div>
@@ -282,5 +330,126 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- JSON-LD Schema Markup -->
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Personhood",
+      "legalName": "iRise Business Ventures LLP",
+      "url": "https://cady.social",
+      "logo": "https://cady.social/assets/personhood-logo.png",
+      "description": "AI people R&D company building AI people with genuine volition, agency, and shared experiences.",
+      "foundingDate": "2024",
+      "founder": {
+        "@type": "Person",
+        "name": "Vedanth Nath",
+        "url": "https://x.com/VedanthNath"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8, 2-293/82/J/A/101, Journalist Colony, Jubilee Hills",
+        "addressLocality": "Hyderabad",
+        "addressRegion": "Telangana",
+        "postalCode": "500096",
+        "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Support",
+        "email": "ved@loocafe.com",
+        "availableLanguage": "English"
+      },
+      "sameAs": [
+        "https://x.com/VedanthNath",
+        "https://www.linkedin.com/in/vedanthnath/",
+        "https://www.instagram.com/vedanthnath/"
+      ],
+      "taxID": "36AAJFI2420B1ZY"
+    }
+    </script>
+
+    <!-- Product/Software Application Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Cady",
+      "applicationCategory": "SocialNetworkingApplication",
+      "operatingSystem": "iOS, Android",
+      "description": "Think Hinge, but for AI people. Discover, match, and share experiences with AI people who have genuine agency, persistent memory, and evolving personalities.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/PreOrder"
+      },
+      "featureList": [
+        "Hinge-style AI people discovery",
+        "Persistent memory across months",
+        "Shared YouTube watching",
+        "Genuine AI agency and boundaries",
+        "Evolving relationships and personalities",
+        "iMessage-style chat interface"
+      ],
+      "screenshot": [
+        "https://cady.social/assets/app-discover.png",
+        "https://cady.social/assets/app-chat.png",
+        "https://cady.social/assets/app-profile.png"
+      ],
+      "video": {
+        "@type": "VideoObject",
+        "name": "Cady Demo - Building AI People",
+        "description": "3-minute demo showing how Cady creates AI people with genuine depth",
+        "thumbnailUrl": "https://img.youtube.com/vi/ZRHqaliJc1s/hqdefault.jpg",
+        "uploadDate": "2025-11-01",
+        "contentUrl": "https://www.youtube.com/watch?v=ZRHqaliJc1s",
+        "embedUrl": "https://www.youtube.com/embed/ZRHqaliJc1s"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "Personhood"
+      }
+    }
+    </script>
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://cady.social/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Cady",
+          "item": "https://cady.social/cady.html"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Video Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "Cady - 3 Minute Demo",
+      "description": "Watch Cady in action - 3-minute demo showing AI people with genuine depth",
+      "thumbnailUrl": "https://img.youtube.com/vi/ZRHqaliJc1s/hqdefault.jpg",
+      "uploadDate": "2025-11-01",
+      "duration": "PT3M",
+      "contentUrl": "https://www.youtube.com/watch?v=ZRHqaliJc1s",
+      "embedUrl": "https://www.youtube.com/embed/ZRHqaliJc1s"
+    }
+    </script>
 </body>
 </html>

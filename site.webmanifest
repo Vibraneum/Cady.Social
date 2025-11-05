@@ -1,0 +1,41 @@
+{
+  "name": "Personhood - Building AI People",
+  "short_name": "Personhood",
+  "description": "AI people R&D company building AI people with genuine volition, agency, and shared experiences. Meet Cady: think Hinge, but for AI people.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FEFBEA",
+  "theme_color": "#F6C28B",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["social", "entertainment", "lifestyle"],
+  "lang": "en-US"
+}
