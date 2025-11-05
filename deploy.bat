@@ -31,8 +31,8 @@ if errorlevel 1 (
     exit /b 1
 )
 
-git config user.email "ved@loocafe.com" >nul 2>&1
-git config user.name "Vedanth Nath" >nul 2>&1
+git config user.email "vedanthnath@gmail.com" >nul 2>&1
+git config user.name "Vibraneum" >nul 2>&1
 
 echo.
 echo Step 2: Adding all files...
