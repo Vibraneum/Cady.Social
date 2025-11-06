@@ -6,9 +6,7 @@
 - Go to https://sheets.google.com
 - Sign in with `ved@loocafe.com`
 - Create blank sheet named: **"Cady Waitlist"**
-- **You DON'T need to add headers!** The script creates them automatically with:
-  - `#` (Serial Number) | `Timestamp` | `Name` | `Email` | `Status` | `Notes`
-  - ✨ Beautiful formatting, dropdowns, and color coding included!
+- Leave it empty - the script will set everything up!
 
 ### 2️⃣ Copy Apps Script Code
 - In Google Sheet: **Extensions** → **Apps Script**
@@ -16,6 +14,22 @@
 - Open `waitlist-appscript.js` from this repo
 - Copy ALL code and paste into Apps Script
 - Click **Save** (💾)
+
+### 2.5️⃣ Run Setup Function
+- In function dropdown, select: **`setupSheet`**
+- Click **Run** (▶)
+- **First time**: Authorize permissions
+  - Click "Review Permissions"
+  - Choose your account
+  - "Advanced" → "Go to Cady Waitlist Handler"
+  - "Allow"
+- You'll see a success popup! ✅
+- Your sheet is now beautifully formatted with:
+  - Headers: `#` | `Timestamp` | `Name` | `Email` | `Status` | `Notes`
+  - Status dropdown (7 options)
+  - Color coding
+  - **DD/MM/YY date format**
+  - Sample row (you can delete it)
 
 ### 3️⃣ Test Email Templates (Optional but Recommended)
 - In Apps Script, select function dropdown: `testEmails`

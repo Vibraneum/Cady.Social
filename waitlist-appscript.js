@@ -2,22 +2,31 @@
  * Personhood Waitlist - Google Apps Script
  * Handles form submissions with beautiful email notifications
  *
- * Setup Instructions:
- * 1. Create new Google Sheet: "Cady Waitlist"
- * 2. Add column headers: Timestamp | Email | Name | Status | Notes
- * 3. Go to Extensions → Apps Script
- * 4. Paste this entire code
- * 5. Click "Deploy" → "New deployment"
- * 6. Type: Web app
- * 7. Execute as: Me
- * 8. Who has access: Anyone
- * 9. Click "Deploy" and copy the Web App URL
- * 10. Update form action in index.html with the URL
+ * SETUP INSTRUCTIONS:
+ *
+ * STEP 1: Initialize the spreadsheet
+ *   - Run the function: setupSheet() (select it from dropdown, click Run)
+ *   - This creates the beautiful formatted sheet automatically
+ *
+ * STEP 2: Test emails (optional)
+ *   - Run the function: testEmails()
+ *   - Check ved@loocafe.com inbox for beautiful test emails
+ *
+ * STEP 3: Deploy as Web App
+ *   - Click "Deploy" → "New deployment"
+ *   - Type: Web app
+ *   - Execute as: Me
+ *   - Who has access: Anyone
+ *   - Click "Deploy" and copy the Web App URL
+ *
+ * STEP 4: Update website
+ *   - Paste URL into script.js line 57
  */
 
 // Configuration
 const ADMIN_EMAIL = 'ved@loocafe.com';
 const SHEET_NAME = 'Waitlist';
+const DATE_FORMAT = 'dd/MM/yy HH:mm'; // DD/MM/YY format
 
 function doPost(e) {
   try {
@@ -106,7 +115,7 @@ function saveToSheet(timestamp, email, name) {
   // Append new row with serial number
   const newRow = [
     serialNumber,                                    // Serial #
-    Utilities.formatDate(timestamp, Session.getScriptTimeZone(), 'MMM dd, yyyy HH:mm'), // Formatted timestamp
+    Utilities.formatDate(timestamp, Session.getScriptTimeZone(), DATE_FORMAT), // Formatted timestamp (DD/MM/YY)
     name,                                           // Name
     email,                                          // Email
     'New',                                          // Status (default)
@@ -461,7 +470,7 @@ function sendAdminNotification(email, name, timestamp) {
           </tr>
           <tr>
             <td>Timestamp</td>
-            <td>${Utilities.formatDate(timestamp, Session.getScriptTimeZone(), 'MMM dd, yyyy HH:mm:ss')}</td>
+            <td>${Utilities.formatDate(timestamp, Session.getScriptTimeZone(), DATE_FORMAT)}</td>
           </tr>
         </table>
 
@@ -480,7 +489,7 @@ New Cady Waitlist Signup!
 
 Name: ${name}
 Email: ${email}
-Timestamp: ${Utilities.formatDate(timestamp, Session.getScriptTimeZone(), 'MMM dd, yyyy HH:mm:ss')}
+Timestamp: ${Utilities.formatDate(timestamp, Session.getScriptTimeZone(), DATE_FORMAT)}
 
 View full waitlist: https://docs.google.com/spreadsheets/d/${SpreadsheetApp.getActiveSpreadsheet().getId()}
   `;
@@ -496,9 +505,146 @@ function isValidEmail(email) {
   return emailRegex.test(email);
 }
 
-// Test function - run this to verify setup
+/**
+ * SETUP FUNCTION - Run this first!
+ * Creates and formats the waitlist spreadsheet
+ * Select this function from dropdown and click "Run"
+ */
+function setupSheet() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName(SHEET_NAME);
+
+  // Delete sheet if it already exists (fresh start)
+  if (sheet) {
+    Logger.log('⚠️ Sheet "' + SHEET_NAME + '" already exists. Deleting for fresh setup...');
+    ss.deleteSheet(sheet);
+  }
+
+  // Create new sheet
+  sheet = ss.insertSheet(SHEET_NAME);
+  Logger.log('✅ Created sheet: ' + SHEET_NAME);
+
+  // Setup headers
+  sheet.appendRow(['#', 'Timestamp', 'Name', 'Email', 'Status', 'Notes']);
+  Logger.log('✅ Added headers');
+
+  // Format header row - Beautiful Personhood style
+  const headerRange = sheet.getRange(1, 1, 1, 6);
+  headerRange.setFontWeight('bold');
+  headerRange.setBackground('#F6C28B'); // Warm peach
+  headerRange.setFontColor('#3E3B28'); // Dark brown
+  headerRange.setFontSize(11);
+  headerRange.setVerticalAlignment('middle');
+  headerRange.setHorizontalAlignment('center');
+
+  // Add borders to header
+  headerRange.setBorder(true, true, true, true, true, true, '#3E3B28', SpreadsheetApp.BorderStyle.SOLID_MEDIUM);
+  Logger.log('✅ Formatted headers');
+
+  // Set column widths for better readability
+  sheet.setColumnWidth(1, 50);   // Serial number - narrow
+  sheet.setColumnWidth(2, 180);  // Timestamp - wider
+  sheet.setColumnWidth(3, 150);  // Name
+  sheet.setColumnWidth(4, 250);  // Email - widest
+  sheet.setColumnWidth(5, 120);  // Status
+  sheet.setColumnWidth(6, 300);  // Notes - wide for comments
+  Logger.log('✅ Set column widths');
+
+  // Freeze header row
+  sheet.setFrozenRows(1);
+  Logger.log('✅ Froze header row');
+
+  // Setup Status dropdown with validation
+  setupStatusDropdown(sheet);
+  Logger.log('✅ Added status dropdown');
+
+  // Add conditional formatting for status colors
+  setupConditionalFormatting(sheet);
+  Logger.log('✅ Added color coding');
+
+  // Add sample row to show formatting
+  const sampleTimestamp = new Date();
+  sheet.appendRow([
+    1,
+    Utilities.formatDate(sampleTimestamp, Session.getScriptTimeZone(), DATE_FORMAT),
+    'Sample User',
+    'sample@example.com',
+    'New',
+    'This is a test row - feel free to delete!'
+  ]);
+
+  // Format sample row
+  const sampleRange = sheet.getRange(2, 1, 1, 6);
+  sampleRange.setFontSize(10);
+  sampleRange.setVerticalAlignment('middle');
+  sampleRange.setBorder(true, true, true, true, true, true, '#E8E8E8', SpreadsheetApp.BorderStyle.SOLID);
+
+  // Center align serial, timestamp, status
+  sheet.getRange(2, 1).setHorizontalAlignment('center');
+  sheet.getRange(2, 2).setHorizontalAlignment('center');
+  sheet.getRange(2, 5).setHorizontalAlignment('center');
+
+  // Left align name, email, notes
+  sheet.getRange(2, 3).setHorizontalAlignment('left');
+  sheet.getRange(2, 4).setHorizontalAlignment('left');
+  sheet.getRange(2, 6).setHorizontalAlignment('left');
+
+  sampleRange.setBackground('#FFFFFF');
+  Logger.log('✅ Added sample row');
+
+  Logger.log('');
+  Logger.log('🎉 SETUP COMPLETE!');
+  Logger.log('📊 Your beautiful waitlist spreadsheet is ready!');
+  Logger.log('');
+  Logger.log('Next steps:');
+  Logger.log('1. Delete the sample row if you want');
+  Logger.log('2. Run testEmails() to test email notifications');
+  Logger.log('3. Deploy as Web App');
+  Logger.log('');
+
+  // Show success message
+  SpreadsheetApp.getUi().alert(
+    '✅ Setup Complete!',
+    'Your beautiful waitlist spreadsheet is ready!\n\n' +
+    'Features added:\n' +
+    '✓ Serial numbers\n' +
+    '✓ Beautiful formatting\n' +
+    '✓ Status dropdown (7 options)\n' +
+    '✓ Color coding\n' +
+    '✓ Frozen headers\n' +
+    '✓ DD/MM/YY date format\n\n' +
+    'Next: Run testEmails() to test notifications!',
+    SpreadsheetApp.getUi().ButtonSet.OK
+  );
+}
+
+/**
+ * TEST FUNCTION - Run this to verify email setup
+ * Sends test emails to ved@loocafe.com
+ * Select this function from dropdown and click "Run"
+ */
 function testEmails() {
+  Logger.log('📧 Sending test emails...');
+
   sendUserConfirmation('ved@loocafe.com', 'Vedanth Nath');
+  Logger.log('✅ Sent user confirmation email to ved@loocafe.com');
+
   sendAdminNotification('test@example.com', 'Test User', new Date());
-  Logger.log('Test emails sent!');
+  Logger.log('✅ Sent admin notification email to ved@loocafe.com');
+
+  Logger.log('');
+  Logger.log('🎉 Test emails sent successfully!');
+  Logger.log('📬 Check your inbox: ved@loocafe.com');
+  Logger.log('');
+
+  // Show success message
+  SpreadsheetApp.getUi().alert(
+    '✅ Test Emails Sent!',
+    'Check your inbox at ved@loocafe.com\n\n' +
+    'You should receive:\n' +
+    '1. User confirmation email (beautiful welcome)\n' +
+    '2. Admin notification email (signup alert)\n\n' +
+    'Next: Deploy as Web App!',
+    SpreadsheetApp.getUi().ButtonSet.OK
+  );
 }
