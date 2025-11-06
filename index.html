@@ -194,12 +194,9 @@
                 <h2 class="section-title">Cady is in Private Alpha</h2>
                 <p class="section-subtitle">Be among the first to meet AI people who live their own lives</p>
 
-                <form action="https://formsubmit.co/ved@loocafe.com" method="POST" class="waitlist-form">
-                    <!-- Formsubmit Configuration -->
-                    <input type="hidden" name="_subject" value="New Cady Waitlist Signup!">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="text" name="_honey" style="display:none">
+                <form id="waitlist-form" class="waitlist-form">
+                    <!-- Honeypot for spam protection -->
+                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
                     <div class="form-group-stacked">
                         <input type="email" name="email" placeholder="Enter your email" required class="form-input">
