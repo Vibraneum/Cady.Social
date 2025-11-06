@@ -2,25 +2,27 @@
  * Personhood Waitlist - Google Apps Script
  * Handles form submissions with beautiful email notifications
  *
- * SETUP INSTRUCTIONS:
+ * 🚀 QUICK SETUP - JUST RUN ONE COMMAND:
  *
- * STEP 1: Initialize the spreadsheet
- *   - Run the function: setupSheet() (select it from dropdown, click Run)
- *   - This creates the beautiful formatted sheet automatically
+ * 1. Function dropdown → Select: setup()
+ * 2. Click Run (▶)
+ * 3. Authorize (first time)
+ * 4. Done! Everything is set up ✅
  *
- * STEP 2: Test emails (optional)
- *   - Run the function: testEmails()
- *   - Check ved@loocafe.com inbox for beautiful test emails
+ * WHAT setup() DOES:
+ * - Creates beautiful formatted spreadsheet
+ * - Sets up dropdowns and color coding
+ * - Sends you test emails to verify
+ * - Shows you next steps
  *
- * STEP 3: Deploy as Web App
- *   - Click "Deploy" → "New deployment"
- *   - Type: Web app
- *   - Execute as: Me
- *   - Who has access: Anyone
- *   - Click "Deploy" and copy the Web App URL
+ * THEN:
+ * - Deploy as Web App (Deploy → New deployment → Anyone)
+ * - Copy URL to script.js line 57
  *
- * STEP 4: Update website
- *   - Paste URL into script.js line 57
+ * 📧 MASS EMAIL FUNCTIONS:
+ * - emailAllUsers() → Email everyone on waitlist (BCC style)
+ * - emailNewSignups() → Email only "New" status users
+ * - emailInterested() → Email only "Interested" users
  */
 
 // Configuration
@@ -77,10 +79,10 @@ function saveToSheet(timestamp, email, name) {
     sheet = ss.insertSheet(SHEET_NAME);
 
     // Setup headers
-    sheet.appendRow(['#', 'Timestamp', 'Name', 'Email', 'Status', 'Notes']);
+    sheet.appendRow(['#', 'Timestamp', 'Name', 'Email', 'Status', 'Last Contacted', 'Notes']);
 
     // Format header row - Beautiful Personhood style
-    const headerRange = sheet.getRange(1, 1, 1, 6);
+    const headerRange = sheet.getRange(1, 1, 1, 7);
     headerRange.setFontWeight('bold');
     headerRange.setBackground('#F6C28B'); // Warm peach
     headerRange.setFontColor('#3E3B28'); // Dark brown
@@ -93,11 +95,12 @@ function saveToSheet(timestamp, email, name) {
 
     // Set column widths for better readability
     sheet.setColumnWidth(1, 50);   // Serial number - narrow
-    sheet.setColumnWidth(2, 180);  // Timestamp - wider
-    sheet.setColumnWidth(3, 150);  // Name
-    sheet.setColumnWidth(4, 250);  // Email - widest
-    sheet.setColumnWidth(5, 120);  // Status
-    sheet.setColumnWidth(6, 300);  // Notes - wide for comments
+    sheet.setColumnWidth(2, 140);  // Timestamp
+    sheet.setColumnWidth(3, 130);  // Name
+    sheet.setColumnWidth(4, 220);  // Email
+    sheet.setColumnWidth(5, 110);  // Status
+    sheet.setColumnWidth(6, 140);  // Last Contacted
+    sheet.setColumnWidth(7, 250);  // Notes
 
     // Freeze header row
     sheet.setFrozenRows(1);
@@ -119,6 +122,7 @@ function saveToSheet(timestamp, email, name) {
     name,                                           // Name
     email,                                          // Email
     'New',                                          // Status (default)
+    '',                                             // Last Contacted (empty)
     ''                                              // Notes (empty)
   ];
 
@@ -126,7 +130,7 @@ function saveToSheet(timestamp, email, name) {
 
   // Get the row that was just added
   const lastRow = sheet.getLastRow();
-  const dataRange = sheet.getRange(lastRow, 1, 1, 6);
+  const dataRange = sheet.getRange(lastRow, 1, 1, 7);
 
   // Format the new row
   dataRange.setFontSize(10);
@@ -135,15 +139,16 @@ function saveToSheet(timestamp, email, name) {
   // Add borders to new row
   dataRange.setBorder(true, true, true, true, true, true, '#E8E8E8', SpreadsheetApp.BorderStyle.SOLID);
 
-  // Center align serial number, timestamp, and status
+  // Center align serial number, timestamp, status, last contacted
   sheet.getRange(lastRow, 1).setHorizontalAlignment('center'); // Serial
   sheet.getRange(lastRow, 2).setHorizontalAlignment('center'); // Timestamp
   sheet.getRange(lastRow, 5).setHorizontalAlignment('center'); // Status
+  sheet.getRange(lastRow, 6).setHorizontalAlignment('center'); // Last Contacted
 
   // Left align name, email, notes
   sheet.getRange(lastRow, 3).setHorizontalAlignment('left');   // Name
   sheet.getRange(lastRow, 4).setHorizontalAlignment('left');   // Email
-  sheet.getRange(lastRow, 6).setHorizontalAlignment('left');   // Notes
+  sheet.getRange(lastRow, 7).setHorizontalAlignment('left');   // Notes
 
   // Alternating row colors for better readability
   if (lastRow % 2 === 0) {
@@ -525,11 +530,11 @@ function setupSheet() {
   Logger.log('✅ Created sheet: ' + SHEET_NAME);
 
   // Setup headers
-  sheet.appendRow(['#', 'Timestamp', 'Name', 'Email', 'Status', 'Notes']);
+  sheet.appendRow(['#', 'Timestamp', 'Name', 'Email', 'Status', 'Last Contacted', 'Notes']);
   Logger.log('✅ Added headers');
 
   // Format header row - Beautiful Personhood style
-  const headerRange = sheet.getRange(1, 1, 1, 6);
+  const headerRange = sheet.getRange(1, 1, 1, 7);
   headerRange.setFontWeight('bold');
   headerRange.setBackground('#F6C28B'); // Warm peach
   headerRange.setFontColor('#3E3B28'); // Dark brown
@@ -543,11 +548,12 @@ function setupSheet() {
 
   // Set column widths for better readability
   sheet.setColumnWidth(1, 50);   // Serial number - narrow
-  sheet.setColumnWidth(2, 180);  // Timestamp - wider
-  sheet.setColumnWidth(3, 150);  // Name
-  sheet.setColumnWidth(4, 250);  // Email - widest
-  sheet.setColumnWidth(5, 120);  // Status
-  sheet.setColumnWidth(6, 300);  // Notes - wide for comments
+  sheet.setColumnWidth(2, 140);  // Timestamp
+  sheet.setColumnWidth(3, 130);  // Name
+  sheet.setColumnWidth(4, 220);  // Email
+  sheet.setColumnWidth(5, 110);  // Status
+  sheet.setColumnWidth(6, 140);  // Last Contacted
+  sheet.setColumnWidth(7, 250);  // Notes
   Logger.log('✅ Set column widths');
 
   // Freeze header row
@@ -570,24 +576,26 @@ function setupSheet() {
     'Sample User',
     'sample@example.com',
     'New',
+    '',
     'This is a test row - feel free to delete!'
   ]);
 
   // Format sample row
-  const sampleRange = sheet.getRange(2, 1, 1, 6);
+  const sampleRange = sheet.getRange(2, 1, 1, 7);
   sampleRange.setFontSize(10);
   sampleRange.setVerticalAlignment('middle');
   sampleRange.setBorder(true, true, true, true, true, true, '#E8E8E8', SpreadsheetApp.BorderStyle.SOLID);
 
-  // Center align serial, timestamp, status
+  // Center align serial, timestamp, status, last contacted
   sheet.getRange(2, 1).setHorizontalAlignment('center');
   sheet.getRange(2, 2).setHorizontalAlignment('center');
   sheet.getRange(2, 5).setHorizontalAlignment('center');
+  sheet.getRange(2, 6).setHorizontalAlignment('center');
 
   // Left align name, email, notes
   sheet.getRange(2, 3).setHorizontalAlignment('left');
   sheet.getRange(2, 4).setHorizontalAlignment('left');
-  sheet.getRange(2, 6).setHorizontalAlignment('left');
+  sheet.getRange(2, 7).setHorizontalAlignment('left');
 
   sampleRange.setBackground('#FFFFFF');
   Logger.log('✅ Added sample row');
@@ -645,6 +653,221 @@ function testEmails() {
     '1. User confirmation email (beautiful welcome)\n' +
     '2. Admin notification email (signup alert)\n\n' +
     'Next: Deploy as Web App!',
+    SpreadsheetApp.getUi().ButtonSet.OK
+  );
+}
+
+/**
+ * ⚡ SINGLE SETUP COMMAND - RUN THIS FIRST!
+ * Does everything in one go: creates sheet + tests emails
+ * Select this function from dropdown and click "Run"
+ */
+function setup() {
+  Logger.log('🚀 Starting complete setup...');
+  Logger.log('');
+  
+  // Step 1: Setup sheet
+  Logger.log('📊 STEP 1: Setting up spreadsheet...');
+  setupSheet();
+  
+  // Step 2: Test emails
+  Logger.log('');
+  Logger.log('📧 STEP 2: Testing email notifications...');
+  testEmails();
+  
+  Logger.log('');
+  Logger.log('🎉 COMPLETE SETUP FINISHED!');
+  Logger.log('');
+  Logger.log('Next steps:');
+  Logger.log('1. Check ved@loocafe.com for test emails');
+  Logger.log('2. Deploy as Web App (Deploy → New deployment)');
+  Logger.log('3. Execute as: Me, Who has access: Anyone');
+  Logger.log('4. Copy Web App URL to script.js line 57');
+  Logger.log('');
+  
+  // Don't show another popup since setupSheet() and testEmails() already show popups
+}
+
+/**
+ * 📧 EMAIL ALL USERS
+ * Sends mass email to everyone on waitlist
+ * Uses individual sends (looks personal, not BCC spam)
+ * Updates "Last Contacted" column automatically
+ */
+function emailAllUsers() {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
+  
+  if (!sheet) {
+    SpreadsheetApp.getUi().alert('❌ Error', 'Waitlist sheet not found! Run setup() first.', SpreadsheetApp.getUi().ButtonSet.OK);
+    return;
+  }
+  
+  const data = sheet.getDataRange().getValues();
+  
+  // Skip header row
+  const users = data.slice(1);
+  
+  if (users.length === 0) {
+    SpreadsheetApp.getUi().alert('⚠️ No Users', 'No users in waitlist yet!', SpreadsheetApp.getUi().ButtonSet.OK);
+    return;
+  }
+  
+  // Confirm before sending
+  const response = SpreadsheetApp.getUi().alert(
+    '📧 Email All Users?',
+    `Send email to all ${users.length} users?\n\nThis will:\n- Send individual emails to each person\n- Update "Last Contacted" column\n- Use the welcome email template`,
+    SpreadsheetApp.getUi().ButtonSet.YES_NO
+  );
+  
+  if (response !== SpreadsheetApp.getUi().Button.YES) {
+    Logger.log('❌ Email cancelled by user');
+    return;
+  }
+  
+  let successCount = 0;
+  let errorCount = 0;
+  const timestamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), DATE_FORMAT);
+  
+  Logger.log(`📧 Sending emails to ${users.length} users...`);
+  
+  users.forEach((row, index) => {
+    const rowNumber = index + 2; // +2 because of header and 0-index
+    const email = row[3]; // Email column
+    const name = row[2] || 'there'; // Name column
+    
+    if (!email || !isValidEmail(email)) {
+      Logger.log(`⚠️ Row ${rowNumber}: Invalid email - ${email}`);
+      errorCount++;
+      return;
+    }
+    
+    try {
+      sendUserConfirmation(email, name);
+      
+      // Update Last Contacted column (column 6)
+      sheet.getRange(rowNumber, 6).setValue(timestamp);
+      
+      successCount++;
+      Logger.log(`✅ Row ${rowNumber}: Sent to ${email}`);
+    } catch (error) {
+      Logger.log(`❌ Row ${rowNumber}: Failed to send to ${email} - ${error}`);
+      errorCount++;
+    }
+  });
+  
+  Logger.log('');
+  Logger.log(`🎉 Email campaign complete!`);
+  Logger.log(`✅ Sent: ${successCount}`);
+  Logger.log(`❌ Failed: ${errorCount}`);
+  Logger.log('');
+  
+  SpreadsheetApp.getUi().alert(
+    '✅ Emails Sent!',
+    `Successfully sent: ${successCount}\nFailed: ${errorCount}\n\n"Last Contacted" column updated!`,
+    SpreadsheetApp.getUi().ButtonSet.OK
+  );
+}
+
+/**
+ * 📧 EMAIL NEW SIGNUPS ONLY
+ * Sends email only to users with "New" status
+ * Perfect for welcoming recent signups
+ */
+function emailNewSignups() {
+  emailByStatus('New');
+}
+
+/**
+ * 📧 EMAIL INTERESTED USERS ONLY
+ * Sends email only to users with "Interested" status
+ * Perfect for sending updates to engaged users
+ */
+function emailInterested() {
+  emailByStatus('Interested');
+}
+
+/**
+ * Helper function to email users by status
+ * @param {string} status - Status to filter by (e.g., "New", "Interested")
+ */
+function emailByStatus(status) {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
+  
+  if (!sheet) {
+    SpreadsheetApp.getUi().alert('❌ Error', 'Waitlist sheet not found! Run setup() first.', SpreadsheetApp.getUi().ButtonSet.OK);
+    return;
+  }
+  
+  const data = sheet.getDataRange().getValues();
+  
+  // Skip header row and filter by status
+  const filteredUsers = data.slice(1).map((row, index) => ({
+    row: row,
+    rowNumber: index + 2
+  })).filter(item => item.row[4] === status); // Status column (index 4)
+  
+  if (filteredUsers.length === 0) {
+    SpreadsheetApp.getUi().alert(
+      '⚠️ No Users Found',
+      `No users with "${status}" status found!`,
+      SpreadsheetApp.getUi().ButtonSet.OK
+    );
+    return;
+  }
+  
+  // Confirm before sending
+  const response = SpreadsheetApp.getUi().alert(
+    `📧 Email "${status}" Users?`,
+    `Send email to ${filteredUsers.length} users with "${status}" status?\n\nThis will:\n- Send individual emails to each person\n- Update "Last Contacted" column`,
+    SpreadsheetApp.getUi().ButtonSet.YES_NO
+  );
+  
+  if (response !== SpreadsheetApp.getUi().Button.YES) {
+    Logger.log('❌ Email cancelled by user');
+    return;
+  }
+  
+  let successCount = 0;
+  let errorCount = 0;
+  const timestamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), DATE_FORMAT);
+  
+  Logger.log(`📧 Sending emails to ${filteredUsers.length} users with "${status}" status...`);
+  
+  filteredUsers.forEach(item => {
+    const row = item.row;
+    const rowNumber = item.rowNumber;
+    const email = row[3]; // Email column
+    const name = row[2] || 'there'; // Name column
+    
+    if (!email || !isValidEmail(email)) {
+      Logger.log(`⚠️ Row ${rowNumber}: Invalid email - ${email}`);
+      errorCount++;
+      return;
+    }
+    
+    try {
+      sendUserConfirmation(email, name);
+      
+      // Update Last Contacted column (column 6)
+      sheet.getRange(rowNumber, 6).setValue(timestamp);
+      
+      successCount++;
+      Logger.log(`✅ Row ${rowNumber}: Sent to ${email}`);
+    } catch (error) {
+      Logger.log(`❌ Row ${rowNumber}: Failed to send to ${email} - ${error}`);
+      errorCount++;
+    }
+  });
+  
+  Logger.log('');
+  Logger.log(`🎉 Email campaign complete!`);
+  Logger.log(`✅ Sent: ${successCount}`);
+  Logger.log(`❌ Failed: ${errorCount}`);
+  Logger.log('');
+  
+  SpreadsheetApp.getUi().alert(
+    '✅ Emails Sent!',
+    `Sent to ${successCount} "${status}" users\nFailed: ${errorCount}\n\n"Last Contacted" column updated!`,
     SpreadsheetApp.getUi().ButtonSet.OK
   );
 }
