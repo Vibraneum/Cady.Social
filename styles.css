@@ -2666,3 +2666,33 @@ button:active,
 .btn:active {
     transform: scale(0.98);
 }
+
+/* ===== Twitter Video Embed (9:16 Aspect Ratio) ===== */
+.twitter-video-container {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    margin: 3rem auto 0;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(62, 59, 40, 0.15);
+    background: var(--white);
+}
+
+.twitter-video-container .twitter-tweet {
+    margin: 0 auto !important;
+}
+
+/* Remove Twitter's default border for cleaner look */
+.twitter-video-container iframe {
+    border-radius: var(--radius-xl) !important;
+}
+
+/* Mobile adjustments for Twitter video */
+@media (max-width: 640px) {
+    .twitter-video-container {
+        max-width: 100%;
+        margin: 2rem auto 0;
+        border-radius: var(--radius-lg);
+    }
+}
