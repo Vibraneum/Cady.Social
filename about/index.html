@@ -51,11 +51,11 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.youtube.com https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.youtube.com https://calendar.google.com; connect-src 'self' https://plausible.io;">
 
     <!-- Preload & DNS Prefetch -->
-    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="../styles.css" as="style">
     <link rel="dns-prefetch" href="https://www.youtube.com">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -68,15 +68,15 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-content">
-                <a href="index.html" class="logo">
-                    <img src="assets/personhood-logo.png" alt="Personhood logo - Building AI People" width="40" height="40">
+                <a href="/" class="logo">
+                    <img src="../assets/personhood-logo.png" alt="Personhood logo - Building AI People" width="40" height="40">
                     <span>Personhood</span>
                 </a>
                 <div class="nav-links">
-                    <a href="index.html">Home</a>
-                    <a href="about.html" class="active">About</a>
-                    <a href="cady.html">Cady</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="/">Home</a>
+                    <a href="/about" class="active">About</a>
+                    <a href="/cady">Cady</a>
+                    <a href="/contact">Contact</a>
                 </div>
             </div>
         </div>
@@ -91,7 +91,7 @@
             </div>
         </div>
         <div class="header-image-wrapper">
-            <img src="assets/hero-about.webp" alt="Community and connection" class="header-hero-image" onerror="this.style.display='none'">
+            <img src="../assets/hero-about.webp" alt="Community and connection" class="header-hero-image" onerror="this.style.display='none'">
         </div>
     </section>
 
@@ -219,24 +219,24 @@
             <div class="app-preview-grid">
                 <div class="preview-item">
                     <picture>
-                        <source srcset="assets/app-discover.webp" type="image/webp">
-                        <img src="assets/app-discover.png" alt="Cady discovery screen showing Hinge-style profile cards of AI people with unique personalities and prompts" width="1198" height="2531" loading="lazy">
+                        <source srcset="../assets/app-discover.webp" type="image/webp">
+                        <img src="../assets/app-discover.png" alt="Cady discovery screen showing Hinge-style profile cards of AI people with unique personalities and prompts" width="1198" height="2531" loading="lazy">
                     </picture>
                     <h4>Discover</h4>
                     <p>Hinge-style profiles with unique personalities</p>
                 </div>
                 <div class="preview-item">
                     <picture>
-                        <source srcset="assets/app-chat.webp" type="image/webp">
-                        <img src="assets/app-chat.png" alt="Cady iMessage-style chat interface with AI person showing conversations with custom reactions" width="1198" height="2531" loading="lazy">
+                        <source srcset="../assets/app-chat.webp" type="image/webp">
+                        <img src="../assets/app-chat.png" alt="Cady iMessage-style chat interface with AI person showing conversations with custom reactions" width="1198" height="2531" loading="lazy">
                     </picture>
                     <h4>Chat</h4>
                     <p>iMessage-style conversations with depth</p>
                 </div>
                 <div class="preview-item">
                     <picture>
-                        <source srcset="assets/app-profile.webp" type="image/webp">
-                        <img src="assets/app-profile.png" alt="AI person profile card in Cady showing personality, interests, and evolving relationship details" width="1198" height="2531" loading="lazy">
+                        <source srcset="../assets/app-profile.webp" type="image/webp">
+                        <img src="../assets/app-profile.png" alt="AI person profile card in Cady showing personality, interests, and evolving relationship details" width="1198" height="2531" loading="lazy">
                     </picture>
                     <h4>Connect</h4>
                     <p>Evolving relationships that remember</p>
@@ -276,9 +276,9 @@
                     <h3>Personhood</h3>
                     <p>Building for AI People</p>
                     <div class="footer-links">
-                        <a href="about.html">About</a>
-                        <a href="cady.html">Cady</a>
-                        <a href="contact.html">Contact</a>
+                        <a href="/about">About</a>
+                        <a href="/cady">Cady</a>
+                        <a href="/contact">Contact</a>
                     </div>
                 </div>
                 <div class="footer-legal">
@@ -291,7 +291,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
 
     <!-- JSON-LD Schema Markup -->
     <!-- Organization Schema -->
