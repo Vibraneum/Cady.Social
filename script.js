@@ -50,3 +50,30 @@ document.querySelectorAll('.section').forEach(section => {
     section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(section);
 });
+
+// Form submission animation
+document.querySelectorAll('form[action*="formsubmit"]').forEach(form => {
+    form.addEventListener('submit', function(e) {
+        const button = this.querySelector('button[type="submit"]');
+        if (!button) return;
+
+        const originalText = button.innerHTML;
+
+        // Add loading state
+        button.disabled = true;
+        button.innerHTML = `
+            <span style="display: inline-flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                <span class="spinner"></span>
+                <span>Joining waitlist...</span>
+            </span>
+        `;
+        button.style.opacity = '0.8';
+        button.style.cursor = 'wait';
+
+        // Add success animation to form container
+        const formContainer = this.closest('.form-group-stacked') || this;
+        formContainer.style.transition = 'all 0.3s ease';
+
+        // Let form submit naturally - formsubmit.co will handle the redirect
+    });
+});
