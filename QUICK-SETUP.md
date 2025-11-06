@@ -6,7 +6,9 @@
 - Go to https://sheets.google.com
 - Sign in with `ved@loocafe.com`
 - Create blank sheet named: **"Cady Waitlist"**
-- Add headers in Row 1: `Timestamp | Email | Name | Status | Notes`
+- **You DON'T need to add headers!** The script creates them automatically with:
+  - `#` (Serial Number) | `Timestamp` | `Name` | `Email` | `Status` | `Notes`
+  - ✨ Beautiful formatting, dropdowns, and color coding included!
 
 ### 2️⃣ Copy Apps Script Code
 - In Google Sheet: **Extensions** → **Apps Script**
