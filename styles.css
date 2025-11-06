@@ -2696,3 +2696,80 @@ button:active,
         border-radius: var(--radius-lg);
     }
 }
+
+/* ===== Native Video Player (9:16 Aspect Ratio) ===== */
+.video-player-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 3rem auto 0;
+    background: var(--gray-900);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(62, 59, 40, 0.15);
+}
+
+.cady-video-player {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 9 / 16;
+    background: #000;
+}
+
+.video-caption {
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-peach) 100%);
+    text-align: center;
+}
+
+.twitter-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-dark);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.twitter-link:hover {
+    color: var(--accent-orange);
+    gap: 0.75rem;
+}
+
+.twitter-link svg {
+    transition: transform 0.2s ease;
+}
+
+.twitter-link:hover svg {
+    transform: scale(1.1);
+}
+
+/* Custom video controls styling */
+.cady-video-player::-webkit-media-controls-panel {
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+}
+
+.cady-video-player::-webkit-media-controls-play-button {
+    background-color: var(--accent-orange);
+    border-radius: 50%;
+}
+
+/* Mobile adjustments */
+@media (max-width: 640px) {
+    .video-player-container {
+        max-width: 100%;
+        margin: 2rem auto 0;
+        border-radius: var(--radius-lg);
+    }
+    
+    .video-caption {
+        padding: 0.875rem;
+    }
+    
+    .twitter-link {
+        font-size: 0.875rem;
+    }
+}
