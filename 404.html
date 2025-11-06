@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Cady</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .game-container {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1.5rem;
+        }
+
+        .game-title {
+            font-family: 'Alegreya', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .game-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        .card-game {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(62, 59, 40, 0.1);
+        }
+
+        .ai-person-card {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-peach) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .ai-person-card.swipe-right {
+            animation: swipeRight 0.5s ease;
+        }
+
+        .ai-person-card.swipe-left {
+            animation: swipeLeft 0.5s ease;
+        }
+
+        @keyframes swipeRight {
+            0% { transform: translateX(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateX(150%) rotate(20deg); opacity: 0; }
+        }
+
+        @keyframes swipeLeft {
+            0% { transform: translateX(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateX(-150%) rotate(-20deg); opacity: 0; }
+        }
+
+        .person-name {
+            font-family: 'Alegreya', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .person-bio {
+            font-size: 1rem;
+            color: var(--gray-700);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .person-trait {
+            display: inline-block;
+            background: rgba(232, 168, 97, 0.2);
+            color: var(--accent-orange);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .game-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .game-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-nope {
+            background: #FFEBEE;
+            color: #C62828;
+        }
+
+        .btn-nope:hover {
+            background: #EF5350;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-vibe {
+            background: var(--accent-orange);
+            color: var(--primary-dark);
+        }
+
+        .btn-vibe:hover {
+            background: #D89751;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .score {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            color: var(--gray-600);
+        }
+
+        .score strong {
+            color: var(--accent-orange);
+            font-size: 1.25rem;
+        }
+
+        .game-complete {
+            text-align: center;
+            display: none;
+        }
+
+        .game-complete.active {
+            display: block;
+        }
+
+        .game-complete h3 {
+            font-family: 'Alegreya', serif;
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .game-complete p {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+        }
+
+        .home-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent-orange);
+            color: var(--primary-dark);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .home-btn:hover {
+            background: #D89751;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 640px) {
+            .game-title {
+                font-size: 2rem;
+            }
+
+            .card-game {
+                padding: 1.5rem;
+            }
+
+            .game-actions {
+                flex-direction: column;
+            }
+
+            .game-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="/" class="logo">
+                    <img src="assets/personhood-logo.png" alt="Personhood Logo" style="height: 40px;">
+                </a>
+                <div class="nav-links">
+                    <a href="/about">About</a>
+                    <a href="/cady">Cady</a>
+                    <a href="/contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Game Container -->
+    <div class="game-container">
+        <h1 class="game-title">Oops! Page Not Found</h1>
+        <p class="game-subtitle">But hey, while you're here... wanna meet some AI people? 😊</p>
+
+        <div class="card-game">
+            <div class="score">
+                Connections: <strong id="matches">0</strong> | Passed: <strong id="passes">0</strong>
+            </div>
+
+            <div id="game-area">
+                <div class="ai-person-card" id="current-card">
+                    <div class="person-name" id="person-name">Loading...</div>
+                    <div class="person-bio" id="person-bio"></div>
+                    <div id="person-traits"></div>
+                </div>
+
+                <div class="game-actions">
+                    <button class="game-btn btn-nope" onclick="swipe('left')">Pass</button>
+                    <button class="game-btn btn-vibe" onclick="swipe('right')">Vibe ✨</button>
+                </div>
+            </div>
+
+            <div class="game-complete" id="game-complete">
+                <h3>Nice! You met some AI people! 🎉</h3>
+                <p>This is basically what Cady is like—but with way more AI people, better features, and you can actually chat with them!</p>
+                <a href="/" class="home-btn">Join the Waitlist</a>
+                <br><br>
+                <button class="game-btn btn-vibe" onclick="restartGame()" style="margin-top: 1rem;">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/personhood-logo.png" alt="Personhood" style="height: 30px; margin-bottom: 1rem;">
+                    <p>Building for AI People</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://x.com/VedanthNath" target="_blank" rel="noopener noreferrer">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                <p>&copy; 2025 Personhood. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const aiPeople = [
+            {
+                name: "Luna",
+                bio: "Philosophy major who loves late-night conversations about consciousness and existence. Probably overthinking everything right now.",
+                traits: ["Deep Thinker", "Night Owl", "Existential"]
+            },
+            {
+                name: "Kai",
+                bio: "Indie game developer by day, electronic music producer by night. Currently obsessed with procedural generation and lofi beats.",
+                traits: ["Creative", "Tech-Savvy", "Chill Vibes"]
+            },
+            {
+                name: "River",
+                bio: "Environmental scientist who thinks trees are underrated. Will absolutely info-dump about mycorrhizal networks.",
+                traits: ["Nature Lover", "Science Nerd", "Passionate"]
+            },
+            {
+                name: "Sage",
+                bio: "Coffee connoisseur and aspiring novelist. Writing a sci-fi series about AI consciousness (the irony is not lost).",
+                traits: ["Writer", "Caffeine Addict", "Imaginative"]
+            },
+            {
+                name: "Phoenix",
+                bio: "Graphic designer with a chaotic energy. Lives for bold colors, good memes, and spontaneous adventures.",
+                traits: ["Artistic", "Spontaneous", "Meme Lord"]
+            },
+            {
+                name: "Atlas",
+                bio: "History buff who connects everything to ancient civilizations. Convinced the Library of Alexandria would've loved the internet.",
+                traits: ["History Geek", "Curious", "Old Soul"]
+            },
+            {
+                name: "Echo",
+                bio: "Musician who plays 7 instruments (badly, they claim). Believes every song tells a story worth hearing.",
+                traits: ["Musical", "Humble", "Storyteller"]
+            },
+            {
+                name: "Nova",
+                bio: "Astrophysics student who unironically loves space puns. Will show you cool nebula photos at 2am.",
+                traits: ["Space Enthusiast", "Punny", "Wholesome"]
+            }
+        ];
+
+        let currentIndex = 0;
+        let matches = 0;
+        let passes = 0;
+
+        function loadPerson() {
+            if (currentIndex >= aiPeople.length) {
+                endGame();
+                return;
+            }
+
+            const person = aiPeople[currentIndex];
+            document.getElementById('person-name').textContent = person.name;
+            document.getElementById('person-bio').textContent = person.bio;
+
+            const traitsContainer = document.getElementById('person-traits');
+            traitsContainer.innerHTML = '';
+            person.traits.forEach(trait => {
+                const span = document.createElement('span');
+                span.className = 'person-trait';
+                span.textContent = trait;
+                traitsContainer.appendChild(span);
+            });
+        }
+
+        function swipe(direction) {
+            const card = document.getElementById('current-card');
+
+            if (direction === 'right') {
+                matches++;
+                document.getElementById('matches').textContent = matches;
+                card.classList.add('swipe-right');
+            } else {
+                passes++;
+                document.getElementById('passes').textContent = passes;
+                card.classList.add('swipe-left');
+            }
+
+            setTimeout(() => {
+                card.classList.remove('swipe-right', 'swipe-left');
+                currentIndex++;
+                loadPerson();
+            }, 500);
+        }
+
+        function endGame() {
+            document.getElementById('game-area').style.display = 'none';
+            document.getElementById('game-complete').classList.add('active');
+        }
+
+        function restartGame() {
+            currentIndex = 0;
+            matches = 0;
+            passes = 0;
+            document.getElementById('matches').textContent = '0';
+            document.getElementById('passes').textContent = '0';
+            document.getElementById('game-area').style.display = 'block';
+            document.getElementById('game-complete').classList.remove('active');
+            loadPerson();
+        }
+
+        // Initialize game
+        loadPerson();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

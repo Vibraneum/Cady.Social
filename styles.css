@@ -2483,3 +2483,186 @@ h1, h2, h3 {
         transform: scale(1);
     }
 }
+
+/* ===== Enhanced Button Hover States ===== */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Primary Button Enhanced Hover */
+.btn-primary:hover {
+    background: var(--accent-orange);
+    color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(232, 168, 97, 0.4);
+}
+
+/* Outline Button Enhanced Hover */
+.btn-outline:hover {
+    background: var(--accent-orange);
+    border-color: var(--accent-orange);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(232, 168, 97, 0.3);
+}
+
+/* Full Width Button Hover */
+.btn-full:hover {
+    background: var(--primary-dark);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ===== Spacing Fixes ===== */
+
+/* Section Spacing - More Consistent */
+.section {
+    padding: 5rem 0;
+}
+
+/* Hero Section - Better Spacing */
+.hero {
+    padding: 7rem 0 6rem 0;
+    min-height: 70vh;
+}
+
+/* Waitlist Section - Better Spacing */
+.waitlist-section {
+    padding: 6rem 0;
+}
+
+/* Feature Sections - Consistent Spacing */
+.features-section,
+.about-section,
+.demo-section {
+    padding: 5rem 0;
+}
+
+/* Card Spacing - More Breathing Room */
+.feature-card,
+.use-case-card,
+.contact-card {
+    margin-bottom: 2rem;
+}
+
+/* CTA Sections - Better Spacing */
+.cta-section,
+.cta-box {
+    margin: 4rem 0;
+    padding: 3rem 2rem;
+}
+
+/* Form Spacing - Better Flow */
+.form-group-stacked {
+    gap: 1.25rem;
+}
+
+.form-input {
+    margin-bottom: 0;
+}
+
+/* Alpha Info Box - Better Spacing */
+.alpha-info {
+    margin-top: 3.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Founder CTA - Better Spacing */
+.founder-cta {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+/* FAQ Spacing - More Readable */
+.faq-minimal-item {
+    margin-bottom: 1.5rem;
+    padding: 1.25rem;
+}
+
+/* Button Container Spacing */
+.cta-center {
+    margin-top: 2.5rem;
+    gap: 1.25rem;
+}
+
+/* Mobile Spacing Adjustments */
+@media (max-width: 640px) {
+    .section {
+        padding: 3.5rem 0;
+    }
+
+    .hero {
+        padding: 5rem 0 4rem 0;
+    }
+
+    .cta-section,
+    .cta-box {
+        margin: 3rem 0;
+        padding: 2rem 1.5rem;
+    }
+
+    .alpha-info,
+    .founder-cta {
+        margin-top: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Link Hover States - More Obvious */
+a {
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+.nav-links a:hover {
+    color: var(--accent-orange);
+    transform: translateY(-1px);
+}
+
+/* Footer Link Hovers */
+.footer a:hover {
+    color: var(--accent-orange);
+}
+
+/* Card Hover Effects - More Interactive */
+.feature-card:hover,
+.use-case-card:hover,
+.contact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(62, 59, 40, 0.15);
+}
+
+/* Better Visual Feedback for Interactive Elements */
+button,
+.btn,
+a[href]:not(.logo) {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:active,
+.btn:active {
+    transform: scale(0.98);
+}
