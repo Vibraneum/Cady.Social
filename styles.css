@@ -998,7 +998,9 @@ p {
 
 .cady-header {
     padding: 8rem 0 5rem;
-    background: var(--white) !important;
+    background: linear-gradient(135deg,
+        var(--primary-light) 0%,
+        rgba(246, 194, 139, 0.15) 100%) !important;
 }
 
 .header-cta {
@@ -1096,6 +1098,9 @@ p {
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
+    /* Force proper centering */
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .waitlist-form {
@@ -1749,6 +1754,9 @@ h1, h2, h3 {
     padding: 4rem 3rem;
     background: transparent;
     border-radius: var(--radius-xl);
+    /* Force proper centering */
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .team-box h2 {
@@ -1761,6 +1769,16 @@ h1, h2, h3 {
     line-height: 1.7;
     color: var(--gray-600);
     margin-bottom: 1rem;
+}
+
+.team-box .btn {
+    border: 2px solid var(--accent-orange);
+    box-shadow: 0 4px 12px rgba(232, 168, 97, 0.3);
+}
+
+.team-box .btn:hover {
+    border-color: var(--primary-dark);
+    box-shadow: 0 6px 20px rgba(232, 168, 97, 0.4);
 }
 
 .team-cta-text {
@@ -1811,6 +1829,9 @@ h1, h2, h3 {
     margin: 0 auto;
     position: relative;
     overflow: hidden;
+    /* Force proper centering */
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 /* Subtle warm glow effect */
