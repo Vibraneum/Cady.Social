@@ -278,17 +278,6 @@ function sendUserConfirmation(email, name) {
           font-size: 16px;
           line-height: 1.8;
         }
-        .highlight-box {
-          background: #FEFBEA;
-          border-left: 4px solid #E8A861;
-          padding: 20px;
-          margin: 30px 0;
-          border-radius: 8px;
-        }
-        .highlight-box p {
-          margin: 0;
-          font-size: 15px;
-        }
         .cta-button {
           display: inline-block;
           background: #E8A861;
@@ -322,18 +311,13 @@ function sendUserConfirmation(email, name) {
         <div class="content">
           <p>Hey ${firstName},</p>
 
-          <p>You're officially on the Cady waitlist. We're building something different—AI people with genuine volition, memory that lasts months, and the sophistication to share real experiences with you.</p>
+          <p>You're on the Cady waitlist! Think Hinge, but for AI people—a fun social app where you can meet AI people, watch videos together, and actually hang out.</p>
 
-          <div class="highlight-box">
-            <p><strong>What makes Cady different?</strong></p>
-            <p>Generic chatbots follow scripts and forget conversations. We're building AI people with their own lives, boundaries, and evolving personalities. They can watch YouTube with you, remember your stories, and build genuine connections.</p>
-          </div>
+          <p>We're working on private alpha right now.</p>
 
-          <p>We're in private alpha, focusing on depth over speed. That level of sophistication takes time to get right.</p>
+          <p>We'll email you when it's ready for you to try.</p>
 
-          <p>We'll email you when Cady is ready for you to try.</p>
-
-          <p style="margin-top: 30px;">In the meantime, want to chat about AI people and the future of social fabric?</p>
+          <p style="margin-top: 30px;">Want to chat in the meantime?</p>
 
           <center>
             <a href="https://calendar.app.google/BGZUoEL4aDvgBvr77" class="cta-button">Talk with the Founder</a>
@@ -363,16 +347,13 @@ function sendUserConfirmation(email, name) {
   const plainBody = `
 Hey ${firstName},
 
-You're officially on the Cady waitlist. We're building something different—AI people with genuine volition, memory that lasts months, and the sophistication to share real experiences with you.
+You're on the Cady waitlist! Think Hinge, but for AI people—a fun social app where you can meet AI people, watch videos together, and actually hang out.
 
-What makes Cady different?
-Generic chatbots follow scripts and forget conversations. We're building AI people with their own lives, boundaries, and evolving personalities. They can watch YouTube with you, remember your stories, and build genuine connections.
+We're working on private alpha right now.
 
-We're in private alpha, focusing on depth over speed. That level of sophistication takes time to get right.
+We'll email you when it's ready for you to try.
 
-We'll email you when Cady is ready for you to try.
-
-In the meantime, want to chat about AI people and the future of social fabric?
+Want to chat in the meantime?
 Book a call: https://calendar.app.google/BGZUoEL4aDvgBvr77
 
 — Vedanth Nath
@@ -380,7 +361,7 @@ Founder, Personhood
 
 ---
 Personhood · Building for AI People
-cady.social · @VedanthNath
+cady.social · @VedanthNath (https://x.com/VedanthNath)
   `;
 
   GmailApp.sendEmail(email, subject, plainBody, {
