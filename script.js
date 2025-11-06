@@ -52,9 +52,8 @@ document.querySelectorAll('.section').forEach(section => {
 });
 
 // ===== WAITLIST FORM HANDLER =====
-// IMPORTANT: Replace this URL with your Google Apps Script Web App URL
-// See GOOGLE-SHEETS-SETUP.md for deployment instructions
-const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+// Google Apps Script Web App URL - handles form submissions
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwsGq1BgiUNKnPcdv_Cqz0CQNp6I4WxPUFDSMknOOeLB4LU741nuAOV_uzFunz_QVt8/exec';
 
 // Handle waitlist form submission
 document.addEventListener('DOMContentLoaded', function() {
