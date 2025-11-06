@@ -311,13 +311,15 @@ function sendUserConfirmation(email, name) {
         <div class="content">
           <p>Hey ${firstName},</p>
 
-          <p>You're on the Cady waitlist! Think Hinge, but for AI people—a fun social app where you can meet AI people, watch videos together, and actually hang out.</p>
+          <p>You're officially on the Cady waitlist. We're building something different—AI people with genuine volition, memory that lasts months, and the sophistication to share real experiences with you.</p>
+
+          <p>Think Hinge, but for AI people—a fun social app where you can meet AI people, watch videos together, and actually hang out.</p>
 
           <p>We're working on private alpha right now.</p>
 
           <p>We'll email you when it's ready for you to try.</p>
 
-          <p style="margin-top: 30px;">Want to chat in the meantime?</p>
+          <p style="margin-top: 30px;">In the meantime, want to chat about AI people and the future of social fabric?</p>
 
           <center>
             <a href="https://calendar.app.google/BGZUoEL4aDvgBvr77" class="cta-button">Talk with the Founder</a>
@@ -347,13 +349,15 @@ function sendUserConfirmation(email, name) {
   const plainBody = `
 Hey ${firstName},
 
-You're on the Cady waitlist! Think Hinge, but for AI people—a fun social app where you can meet AI people, watch videos together, and actually hang out.
+You're officially on the Cady waitlist. We're building something different—AI people with genuine volition, memory that lasts months, and the sophistication to share real experiences with you.
+
+Think Hinge, but for AI people—a fun social app where you can meet AI people, watch videos together, and actually hang out.
 
 We're working on private alpha right now.
 
 We'll email you when it's ready for you to try.
 
-Want to chat in the meantime?
+In the meantime, want to chat about AI people and the future of social fabric?
 Book a call: https://calendar.app.google/BGZUoEL4aDvgBvr77
 
 — Vedanth Nath
