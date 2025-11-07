@@ -2820,9 +2820,15 @@ button:active,
     padding: 1rem;
     background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-peach) 100%);
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
-.twitter-link {
+.twitter-link,
+.youtube-link {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -2833,16 +2839,19 @@ button:active,
     transition: all 0.2s ease;
 }
 
-.twitter-link:hover {
+.twitter-link:hover,
+.youtube-link:hover {
     color: var(--accent-orange);
     gap: 0.75rem;
 }
 
-.twitter-link svg {
+.twitter-link svg,
+.youtube-link svg {
     transition: transform 0.2s ease;
 }
 
-.twitter-link:hover svg {
+.twitter-link:hover svg,
+.youtube-link:hover svg {
     transform: scale(1.1);
 }
 
@@ -2866,9 +2875,11 @@ button:active,
     
     .video-caption {
         padding: 0.875rem;
+        gap: 1.5rem;
     }
-    
-    .twitter-link {
+
+    .twitter-link,
+    .youtube-link {
         font-size: 0.875rem;
     }
 }
