@@ -1,8 +1,6 @@
 # PDFs and large media files (keep them local, reference online if needed)
 *.pdf
 *.mp4
-# Allow specific video files for the site
-!assets/cady-demo.mp4
 
 # OS files
 .DS_Store
