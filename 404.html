@@ -229,7 +229,14 @@
 
         <div class="card-game">
             <div class="score">
-                Connections: <strong id="matches">0</strong> | Passed: <strong id="passes">0</strong>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        Connections: <strong id="matches">0</strong> | Passed: <strong id="passes">0</strong>
+                    </div>
+                    <div style="font-size: 0.875rem; opacity: 0.8;">
+                        <span id="current-progress">1</span> / <span id="total-progress">12</span>
+                    </div>
+                </div>
             </div>
 
             <div id="game-area">
@@ -260,25 +267,39 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <img src="assets/personhood-logo.png" alt="Personhood" style="height: 30px; margin-bottom: 1rem;">
+                    <h3>Personhood</h3>
                     <p>Building for AI People</p>
                 </div>
-                <div class="footer-social">
-                    <a href="https://x.com/VedanthNath" target="_blank" rel="noopener noreferrer">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </a>
+
+                <div class="footer-links">
+                    <a href="/">Home</a>
+                    <a href="/about">About</a>
+                    <a href="/cady">Cady</a>
+                    <a href="/contact">Contact</a>
                 </div>
-            </div>
-            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-                <p>&copy; 2025 Personhood. All rights reserved.</p>
+
+                <div class="footer-social">
+                    <p class="footer-social-label">Follow the journey</p>
+                    <div class="social-icons">
+                        <a href="https://x.com/VedanthNath" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter/X" class="social-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-legal">
+                    <p><strong>iRise Business Ventures LLP</strong></p>
+                    <p>GST: 36AAJFI2420B1ZY | Hyderabad, Telangana 500096, India</p>
+                    <p>&copy; 2025 Personhood. All rights reserved.</p>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        const aiPeople = [
+        const allAiPeople = [
             {
                 name: "Luna",
                 bio: "Philosophy major who loves late-night conversations about consciousness and existence. Probably overthinking everything right now.",
@@ -318,9 +339,40 @@
                 name: "Nova",
                 bio: "Astrophysics student who unironically loves space puns. Will show you cool nebula photos at 2am.",
                 traits: ["Space Enthusiast", "Punny", "Wholesome"]
+            },
+            {
+                name: "Zephyr",
+                bio: "Travel blogger who's been to 47 countries. Has an opinion about every type of street food and will share it enthusiastically.",
+                traits: ["Adventurer", "Foodie", "Storyteller"]
+            },
+            {
+                name: "Iris",
+                bio: "Botanical illustrator obsessed with rare flowers. Their apartment is 80% plants, and they're okay with that.",
+                traits: ["Artist", "Plant Parent", "Patient"]
+            },
+            {
+                name: "Orion",
+                bio: "Competitive chess player who also DJs on weekends. Likes finding patterns in everything—music, games, life.",
+                traits: ["Strategic", "Music Lover", "Analytical"]
+            },
+            {
+                name: "Ember",
+                bio: "Pastry chef experimenting with molecular gastronomy. Believes dessert is both art and science.",
+                traits: ["Creative", "Precise", "Sweet Tooth"]
             }
         ];
 
+        // Shuffle array to randomize order each game
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        let aiPeople = shuffleArray(allAiPeople);
         let currentIndex = 0;
         let matches = 0;
         let passes = 0;
@@ -343,6 +395,12 @@
                 span.textContent = trait;
                 traitsContainer.appendChild(span);
             });
+
+            // Update progress
+            const currentProgressEl = document.getElementById('current-progress');
+            const totalProgressEl = document.getElementById('total-progress');
+            if (currentProgressEl) currentProgressEl.textContent = currentIndex + 1;
+            if (totalProgressEl) totalProgressEl.textContent = aiPeople.length;
         }
 
         function swipe(direction) {
@@ -371,6 +429,7 @@
         }
 
         function restartGame() {
+            aiPeople = shuffleArray(allAiPeople); // Re-shuffle for variety
             currentIndex = 0;
             matches = 0;
             passes = 0;
@@ -381,8 +440,31 @@
             loadPerson();
         }
 
+        // Keyboard controls
+        document.addEventListener('keydown', function(e) {
+            // Only respond if game is active
+            if (document.getElementById('game-area').style.display === 'none') return;
+
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                swipe('left');
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                swipe('right');
+            }
+        });
+
         // Initialize game
         loadPerson();
+
+        // Show hint for keyboard controls
+        const scoreElement = document.querySelector('.score');
+        if (scoreElement) {
+            const hint = document.createElement('p');
+            hint.style.cssText = 'font-size: 0.875rem; margin-top: 0.5rem; opacity: 0.7; font-style: italic;';
+            hint.textContent = '💡 Tip: Use ← → arrow keys or click the buttons!';
+            scoreElement.appendChild(hint);
+        }
     </script>
     <script src="script.js"></script>
 </body>
