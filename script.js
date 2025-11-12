@@ -352,13 +352,13 @@ function showExitIntentPopup() {
         <div class="exit-intent-overlay"></div>
         <div class="exit-intent-content">
             <button class="exit-intent-close" aria-label="Close popup">&times;</button>
-            <h2>Wait! Don't miss out on Cady</h2>
-            <p>Join the private alpha and be among the first to meet AI people who actually remember you.</p>
+            <h2>Before you go...</h2>
+            <p>Join the private alpha and meet AI people with real memory and agency.</p>
             <form class="exit-intent-form" id="exit-intent-form">
                 <input type="email" name="email" placeholder="Enter your email" required>
                 <button type="submit" class="btn btn-primary">Join Waitlist</button>
             </form>
-            <p class="exit-intent-small">No spam. Just updates on when Cady launches.</p>
+            <p class="exit-intent-small">We'll notify you when Cady becomes available.</p>
         </div>
     `;
 
@@ -446,8 +446,15 @@ function createStickyCTA() {
     document.body.appendChild(stickyCTA);
 
     // Show/hide based on scroll position
+    let stickyTimeout;
     window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 800) {
+        const scrollPos = window.pageYOffset;
+
+        // Show after scrolling past hero, hide when near waitlist section
+        const waitlistSection = document.getElementById('waitlist');
+        const waitlistTop = waitlistSection ? waitlistSection.offsetTop - window.innerHeight : Infinity;
+
+        if (scrollPos > 800 && scrollPos < waitlistTop) {
             stickyCTA.classList.add('visible');
         } else {
             stickyCTA.classList.remove('visible');
@@ -476,46 +483,7 @@ function createScrollProgress() {
 document.addEventListener('DOMContentLoaded', createScrollProgress);
 
 // ===== SOCIAL PROOF NOTIFICATIONS =====
-const mockNames = ['Alex', 'Jordan', 'Taylor', 'Morgan', 'Casey', 'Riley', 'Avery', 'Quinn'];
-let notificationIndex = 0;
-
-function showSocialProofNotification() {
-    // Only show if we have real waitlist data
-    const hasRealCount = document.querySelector('.waitlist-count')?.textContent;
-    if (!hasRealCount) return;
-
-    const notification = document.createElement('div');
-    notification.className = 'social-proof-notification';
-
-    const randomName = mockNames[Math.floor(Math.random() * mockNames.length)];
-    const randomTime = Math.floor(Math.random() * 30) + 1;
-
-    notification.innerHTML = `
-        <div class="notification-content">
-            <span class="notification-icon">✓</span>
-            <span class="notification-text"><strong>${randomName}</strong> joined the waitlist</span>
-            <span class="notification-time">${randomTime}m ago</span>
-        </div>
-    `;
-
-    document.body.appendChild(notification);
-
-    setTimeout(() => notification.classList.add('show'), 100);
-    setTimeout(() => notification.classList.remove('show'), 5000);
-    setTimeout(() => notification.remove(), 5500);
-}
-
-// Show notification every 15-25 seconds
-function startSocialProofNotifications() {
-    const interval = (Math.random() * 10000) + 15000; // 15-25 seconds
-    setTimeout(() => {
-        showSocialProofNotification();
-        startSocialProofNotifications();
-    }, interval);
-}
-
-// Start after page has been open for 10 seconds
-setTimeout(startSocialProofNotifications, 10000);
+// REMOVED: No fake notifications - only real data
 
 // ===== KEYBOARD SHORTCUTS =====
 document.addEventListener('keydown', (e) => {
