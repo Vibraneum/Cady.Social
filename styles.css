@@ -2820,7 +2820,7 @@ body,
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    z-index: 1000;
+    z-index: 10000;
 }
 
 [data-theme="dark"] .theme-toggle {
@@ -3608,9 +3608,9 @@ button:active,
 .sticky-cta {
     position: fixed;
     bottom: 2rem;
-    left: 50%;
-    transform: translate(-50%, 100px);
-    z-index: 9999;
+    right: 2rem;
+    transform: translateY(100px);
+    z-index: 999;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -3618,13 +3618,13 @@ button:active,
 
 .sticky-cta.visible {
     opacity: 1;
-    transform: translate(-50%, 0);
+    transform: translateY(0);
     pointer-events: all;
 }
 
 .sticky-cta .btn {
     box-shadow: 0 8px 24px rgba(232, 168, 97, 0.4);
-    padding: 1rem 2.5rem;
+    padding: 1rem 2rem;
     font-size: 1.125rem;
     font-weight: 600;
     white-space: nowrap;
@@ -3635,13 +3635,19 @@ button:active,
     box-shadow: 0 12px 32px rgba(232, 168, 97, 0.5);
 }
 
+@media (max-width: 768px) {
+    .sticky-cta {
+        right: 1rem;
+        bottom: 1rem;
+    }
+}
+
 @media (max-width: 640px) {
     .sticky-cta {
         bottom: 1rem;
         left: 1rem;
         right: 1rem;
         transform: translateY(100px);
-        width: calc(100% - 2rem);
     }
 
     .sticky-cta.visible {

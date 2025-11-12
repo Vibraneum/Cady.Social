@@ -1,15 +1,17 @@
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+// Smooth scrolling for navigation links (including dynamically created ones)
+document.addEventListener('click', function (e) {
+    // Check if clicked element is a link with hash
+    const link = e.target.closest('a[href^="#"]');
+    if (link) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(link.getAttribute('href'));
         if (target) {
             target.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
         }
-    });
+    }
 });
 
 // Add scroll effect to navbar
