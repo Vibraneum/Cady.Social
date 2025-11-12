@@ -4098,3 +4098,133 @@ button:active,
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
+/* ===== ABOUT PAGE SECTION SEPARATION ===== */
+.about-intro {
+    background: var(--white);
+    padding: 6rem 0;
+}
+
+[data-theme="dark"] .about-intro {
+    background: var(--bg-primary);
+}
+
+.features-about {
+    background: linear-gradient(180deg, var(--primary-light) 0%, var(--white) 100%);
+    padding: 6rem 0;
+    position: relative;
+}
+
+[data-theme="dark"] .features-about {
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+}
+
+.features-about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 400px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-orange), transparent);
+    opacity: 0.3;
+}
+
+.approach-simple {
+    background: var(--white);
+    padding: 6rem 0;
+    border-top: 1px solid var(--gray-200);
+}
+
+[data-theme="dark"] .approach-simple {
+    background: var(--bg-primary);
+    border-top-color: var(--border-subtle);
+}
+
+.why-section {
+    background: var(--primary-light);
+    padding: 7rem 0;
+    position: relative;
+}
+
+[data-theme="dark"] .why-section {
+    background: var(--bg-secondary);
+}
+
+.why-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 400px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-orange), transparent);
+    opacity: 0.3;
+}
+
+.demo-video-section {
+    background: var(--white);
+    padding: 6rem 0;
+}
+
+[data-theme="dark"] .demo-video-section {
+    background: var(--bg-primary);
+}
+
+.app-preview-section {
+    background: linear-gradient(180deg, var(--primary-light) 0%, var(--white) 100%);
+    padding: 6rem 0;
+    border-top: 1px solid var(--gray-200);
+}
+
+[data-theme="dark"] .app-preview-section {
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    border-top-color: var(--border-subtle);
+}
+
+.team-section {
+    background: var(--white);
+    padding: 6rem 0;
+}
+
+[data-theme="dark"] .team-section {
+    background: var(--bg-primary);
+}
+
+/* Add spacing between sections */
+.about-intro,
+.features-about,
+.approach-simple,
+.why-section,
+.demo-video-section,
+.app-preview-section,
+.team-section {
+    margin-bottom: 0;
+}
+
+/* Section titles on about page get more breathing room */
+.about-intro h2,
+.features-about h2,
+.approach-simple h2,
+.why-section h2,
+.demo-video-section h2,
+.app-preview-section h2,
+.team-section h2 {
+    margin-bottom: 2.5rem;
+}
+
+@media (max-width: 640px) {
+    .about-intro,
+    .features-about,
+    .approach-simple,
+    .why-section,
+    .demo-video-section,
+    .app-preview-section,
+    .team-section {
+        padding: 4rem 0;
+    }
+}
