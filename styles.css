@@ -896,7 +896,11 @@ p {
     }
 
     .container {
-        padding: 0 1.25rem;
+        padding: 0 1rem;
+    }
+
+    .nav-links {
+        display: none; /* Hide navigation links on mobile */
     }
 
     .navbar {
@@ -3823,6 +3827,8 @@ button:active,
     .sticky-cta .btn {
         width: 100%;
         text-align: center;
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
     }
 }
 
