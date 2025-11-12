@@ -16,6 +16,8 @@
             align-items: center;
             justify-content: center;
             padding: 3rem 1.5rem;
+            position: relative;
+            overflow: hidden;
         }
 
         .game-title {
@@ -25,6 +27,7 @@
             color: var(--primary-dark);
             text-align: center;
             margin-bottom: 1rem;
+            animation: fadeInDown 0.6s ease;
         }
 
         .game-subtitle {
@@ -33,41 +36,109 @@
             text-align: center;
             margin-bottom: 3rem;
             max-width: 600px;
+            animation: fadeInUp 0.6s ease 0.2s both;
         }
 
         .card-game {
-            max-width: 500px;
+            max-width: 520px;
             width: 100%;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(62, 59, 40, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(62, 59, 40, 0.12), 0 2px 8px rgba(62, 59, 40, 0.08);
+            animation: slideUp 0.8s ease 0.4s both;
         }
 
         .ai-person-card {
-            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-peach) 100%);
-            padding: 2rem;
-            border-radius: 12px;
+            background: linear-gradient(135deg,
+                rgba(254, 251, 234, 1) 0%,
+                rgba(246, 194, 139, 0.4) 100%);
+            padding: 2.5rem;
+            border-radius: 16px;
             margin-bottom: 2rem;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(232, 168, 97, 0.15);
+            border: 2px solid rgba(246, 194, 139, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-person-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(246, 194, 139, 0.1) 0%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-10%, -10%); }
+        }
+
+        .ai-person-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(232, 168, 97, 0.25);
         }
 
         .ai-person-card.swipe-right {
-            animation: swipeRight 0.5s ease;
+            animation: swipeRight 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         .ai-person-card.swipe-left {
-            animation: swipeLeft 0.5s ease;
+            animation: swipeLeft 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         @keyframes swipeRight {
-            0% { transform: translateX(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateX(150%) rotate(20deg); opacity: 0; }
+            0% { transform: translateX(0) rotate(0deg) scale(1); opacity: 1; }
+            100% { transform: translateX(150%) rotate(25deg) scale(0.8); opacity: 0; }
         }
 
         @keyframes swipeLeft {
-            0% { transform: translateX(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateX(-150%) rotate(-20deg); opacity: 0; }
+            0% { transform: translateX(0) rotate(0deg) scale(1); opacity: 1; }
+            100% { transform: translateX(-150%) rotate(-25deg) scale(0.8); opacity: 0; }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+            animation: float 1s ease-out forwards;
+        }
+
+        @keyframes float {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(0);
+            }
         }
 
         .person-name {
@@ -105,34 +176,62 @@
         .game-btn {
             padding: 1rem 2rem;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1.125rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .game-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .game-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .game-btn:active {
+            transform: scale(0.95);
         }
 
         .btn-nope {
-            background: #FFEBEE;
+            background: linear-gradient(135deg, #FFCDD2 0%, #FFEBEE 100%);
             color: #C62828;
+            border: 2px solid transparent;
         }
 
         .btn-nope:hover {
-            background: #EF5350;
+            background: linear-gradient(135deg, #EF5350 0%, #E57373 100%);
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(239, 83, 80, 0.4);
         }
 
         .btn-vibe {
-            background: var(--accent-orange);
-            color: var(--primary-dark);
+            background: linear-gradient(135deg, var(--accent-orange) 0%, #D89751 100%);
+            color: white;
+            border: 2px solid transparent;
         }
 
         .btn-vibe:hover {
-            background: #D89751;
-            color: white;
-            transform: translateY(-2px);
+            background: linear-gradient(135deg, #D89751 0%, var(--accent-orange) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(232, 168, 97, 0.5);
         }
 
         .score {
@@ -318,6 +417,26 @@
                 name: "Nova",
                 bio: "Astrophysics student who unironically loves space puns. Will show you cool nebula photos at 2am.",
                 traits: ["Space Enthusiast", "Punny", "Wholesome"]
+            },
+            {
+                name: "Cipher",
+                bio: "Cybersecurity expert with a passion for puzzles and escape rooms. Drinks energy drinks like water.",
+                traits: ["Problem Solver", "Hacker Vibes", "Night Coder"]
+            },
+            {
+                name: "Willow",
+                bio: "Yoga instructor and meditation guide. Believes in manifesting good vibes and collecting houseplants.",
+                traits: ["Zen", "Plant Parent", "Spiritual"]
+            },
+            {
+                name: "Raven",
+                bio: "Gothic poet who writes about existential dread and modern loneliness. Actually pretty cheerful IRL.",
+                traits: ["Dark Academia", "Poetic", "Contradictory"]
+            },
+            {
+                name: "Jasper",
+                bio: "Street food enthusiast and travel blogger. Has eaten weird things in 37 countries and counting.",
+                traits: ["Adventurous", "Foodie", "Storyteller"]
             }
         ];
 
@@ -347,22 +466,51 @@
 
         function swipe(direction) {
             const card = document.getElementById('current-card');
+            const button = event.target.closest('.game-btn');
 
             if (direction === 'right') {
                 matches++;
                 document.getElementById('matches').textContent = matches;
                 card.classList.add('swipe-right');
+                createParticles(button, '#7FB069');  // Green particles for match
             } else {
                 passes++;
                 document.getElementById('passes').textContent = passes;
                 card.classList.add('swipe-left');
+                createParticles(button, '#EF5350');  // Red particles for pass
             }
 
             setTimeout(() => {
                 card.classList.remove('swipe-right', 'swipe-left');
                 currentIndex++;
                 loadPerson();
-            }, 500);
+            }, 600);
+        }
+
+        function createParticles(element, color) {
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            for (let i = 0; i < 12; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = centerX + 'px';
+                particle.style.top = centerY + 'px';
+                particle.style.background = color;
+
+                const angle = (Math.PI * 2 * i) / 12;
+                const velocity = 50 + Math.random() * 50;
+                const tx = Math.cos(angle) * velocity;
+                const ty = Math.sin(angle) * velocity;
+
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+
+                document.body.appendChild(particle);
+
+                setTimeout(() => particle.remove(), 1000);
+            }
         }
 
         function endGame() {

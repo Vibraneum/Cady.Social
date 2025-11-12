@@ -1,3 +1,41 @@
+// ===== DARK MODE FUNCTIONALITY =====
+// Initialize theme on page load
+(function() {
+    // Remove preload class to enable transitions
+    document.documentElement.classList.add('preload');
+
+    // Get saved theme or default to light
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+
+    // Remove preload class after a brief delay
+    setTimeout(() => {
+        document.documentElement.classList.remove('preload');
+    }, 100);
+})();
+
+// Theme toggle functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.querySelector('.theme-toggle');
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            // Update theme
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            // Add click animation
+            this.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+        });
+    }
+});
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
