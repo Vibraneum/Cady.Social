@@ -438,17 +438,116 @@ window.addEventListener('scroll', () => {
     lastScrollTop = scrollTop;
 }, { passive: true });
 
+// ===== WAITLIST POPUP MODAL =====
+function showWaitlistPopup() {
+    // Check if popup already exists
+    if (document.querySelector('.waitlist-popup')) return;
+
+    const popup = document.createElement('div');
+    popup.className = 'waitlist-popup';
+    popup.innerHTML = `
+        <div class="waitlist-popup-overlay"></div>
+        <div class="waitlist-popup-content">
+            <button class="waitlist-popup-close" aria-label="Close popup">&times;</button>
+            <h2>Join the Private Alpha</h2>
+            <p>Be among the first to meet AI people with real memory and agency.</p>
+
+            <form class="waitlist-popup-form" id="waitlist-popup-form">
+                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <input type="text" name="name" placeholder="First name (optional)">
+                <button type="submit" class="btn btn-primary">Join Waitlist</button>
+            </form>
+
+            <p class="waitlist-popup-note">
+                <a href="#waitlist" class="learn-more-link">Learn more about Cady</a>
+            </p>
+        </div>
+    `;
+
+    document.body.appendChild(popup);
+
+    // Close button
+    popup.querySelector('.waitlist-popup-close').addEventListener('click', () => {
+        popup.remove();
+    });
+
+    // Close on overlay click
+    popup.querySelector('.waitlist-popup-overlay').addEventListener('click', () => {
+        popup.remove();
+    });
+
+    // "Learn more" link scrolls and closes popup
+    popup.querySelector('.learn-more-link').addEventListener('click', (e) => {
+        e.preventDefault();
+        popup.remove();
+        const waitlistSection = document.getElementById('waitlist');
+        if (waitlistSection) {
+            waitlistSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+
+    // Handle form submission
+    const form = popup.querySelector('#waitlist-popup-form');
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = form.querySelector('input[name="email"]').value;
+        const name = form.querySelector('input[name="name"]').value;
+        const button = form.querySelector('button[type="submit"]');
+
+        button.textContent = 'Joining...';
+        button.disabled = true;
+
+        try {
+            const formData = new FormData();
+            formData.append('email', email);
+            formData.append('name', name);
+            formData.append('source', 'sticky-popup');
+
+            await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            });
+
+            popup.querySelector('.waitlist-popup-content').innerHTML = `
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">✓</div>
+                    <h2 style="color: #7FB069;">You're on the list!</h2>
+                    <p>Check your email for confirmation.</p>
+                    <button class="btn btn-secondary" style="margin-top: 1.5rem;" onclick="this.closest('.waitlist-popup').remove()">Close</button>
+                </div>
+            `;
+
+            // Update counters
+            updateWaitlistCounters();
+
+        } catch (error) {
+            button.textContent = 'Try Again';
+            button.disabled = false;
+        }
+    });
+
+    // Animate in
+    setTimeout(() => popup.classList.add('active'), 10);
+}
+
 // ===== STICKY CTA BUTTON =====
 function createStickyCTA() {
     const stickyCTA = document.createElement('div');
     stickyCTA.className = 'sticky-cta';
     stickyCTA.innerHTML = `
-        <a href="#waitlist" class="btn btn-primary">Join Waitlist</a>
+        <button class="btn btn-primary sticky-cta-btn">Join Waitlist</button>
     `;
     document.body.appendChild(stickyCTA);
 
+    // Click handler for sticky CTA
+    stickyCTA.querySelector('.sticky-cta-btn').addEventListener('click', (e) => {
+        e.preventDefault();
+        showWaitlistPopup();
+    });
+
     // Show/hide based on scroll position
-    let stickyTimeout;
     window.addEventListener('scroll', () => {
         const scrollPos = window.pageYOffset;
 
