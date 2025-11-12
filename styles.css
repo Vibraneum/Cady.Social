@@ -2808,7 +2808,7 @@ body,
 .theme-toggle {
     position: fixed;
     bottom: 2rem;
-    right: 2rem;
+    left: 2rem;
     width: 56px;
     height: 56px;
     border-radius: 50%;
@@ -2824,7 +2824,7 @@ body,
 }
 
 [data-theme="dark"] .theme-toggle {
-    background: var(--accent-cyan);
+    background: var(--accent-dark-orange);
 }
 
 .theme-toggle:hover {
@@ -2861,8 +2861,8 @@ body,
 /* Mobile responsiveness for toggle */
 @media (max-width: 640px) {
     .theme-toggle {
-        bottom: 1.5rem;
-        right: 1.5rem;
+        bottom: 5rem; /* Above the sticky CTA on mobile */
+        left: 1rem;
         width: 48px;
         height: 48px;
     }
